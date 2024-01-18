@@ -1,0 +1,87 @@
+import type { ComputedRef } from 'vue-demi';
+import type { AnyData, Paginated, Params, Query } from '../types.js';
+import type { UseFindGetDeps, UseFindOptions, UseFindParams } from './types.js';
+export declare function useFind<M = AnyData>(params: ComputedRef<UseFindParams | null>, options: UseFindOptions | undefined, deps: UseFindGetDeps): {
+    paramsWithPagination: {
+        query: any;
+        qid?: string | undefined;
+        paginate?: boolean | import("../types.js").PaginationOptions | undefined;
+        provider?: string | undefined;
+        route?: Record<string, string> | undefined;
+        headers?: Record<string, any> | undefined;
+        temps?: boolean | undefined;
+        clones?: boolean | undefined;
+        ssr?: boolean | undefined;
+        skipGetIfExists?: boolean | undefined;
+        data?: any;
+        preserveSsr?: boolean | undefined;
+    };
+    isSsr: boolean;
+    qid: string;
+    data: M[];
+    allLocalData: M[];
+    total: number;
+    limit: number;
+    skip: number;
+    currentQuery: {
+        ids: any;
+        items: AnyData | import("../index.js").ServiceInstance<AnyData>[];
+        total: any;
+        queriedAt: any;
+        queryState: any;
+        ssr: any;
+        qid: string;
+        query: Query;
+        queryId: string;
+        queryParams: Query;
+        pageParams: {
+            $limit: import("@vueuse/shared").MaybeRef<number>;
+            $skip: import("@vueuse/shared").MaybeRef<number> | undefined;
+        } | undefined;
+        pageId: string | undefined;
+        isExpired: boolean;
+    } | null;
+    cachedQuery: {
+        ids: any;
+        items: AnyData | import("../index.js").ServiceInstance<AnyData>[];
+        total: any;
+        queriedAt: any;
+        queryState: any;
+        ssr: any;
+        qid: string;
+        query: Query;
+        queryId: string;
+        queryParams: Query;
+        pageParams: {
+            $limit: import("@vueuse/shared").MaybeRef<number>;
+            $skip: import("@vueuse/shared").MaybeRef<number> | undefined;
+        } | undefined;
+        pageId: string | undefined;
+        isExpired: boolean;
+    } | null;
+    latestQuery: import("../types.js").QueryInfoExtended | null;
+    previousQuery: import("../types.js").QueryInfoExtended | null;
+    find: (p?: Params<Query>) => Promise<void>;
+    request: {
+        then: <TResult1 = Paginated<AnyData>, TResult2 = never>(onfulfilled?: ((value: Paginated<AnyData>) => TResult1 | PromiseLike<TResult1>) | null | undefined, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | null | undefined) => Promise<TResult1 | TResult2>;
+        catch: <TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | null | undefined) => Promise<Paginated<AnyData> | TResult>;
+        finally: (onfinally?: (() => void) | null | undefined) => Promise<Paginated<AnyData>>;
+        readonly [Symbol.toStringTag]: string;
+    } | null;
+    requestCount: number;
+    queryWhen: (_queryWhenFn: () => boolean) => void;
+    isPending: boolean;
+    haveBeenRequested: boolean;
+    haveLoaded: boolean;
+    error: any;
+    clearError: () => null;
+    pageCount: number;
+    currentPage: number;
+    canPrev: boolean;
+    canNext: boolean;
+    next: () => Promise<void>;
+    prev: () => Promise<void>;
+    toStart: () => Promise<void>;
+    toEnd: () => Promise<void>;
+    toPage: (page: number) => Promise<void>;
+};
