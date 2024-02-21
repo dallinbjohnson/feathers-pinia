@@ -36,7 +36,7 @@ export declare function getArray<T>(data: T | T[]): {
     isArray: boolean;
 };
 export declare function pickDiff(obj: any, diffDef: DiffDefinition): any;
-export declare function diff(original: AnyData, clone: AnyData, diffDef: DiffDefinition): AnyData;
+export declare function diff(dest: AnyData, source: AnyData, diffDef?: DiffDefinition): AnyData;
 /**
  * Restores tempIds to the records returned from the server. The tempIds need to be
  * temporarily put back in place in order to migrate the objects from the tempsById

@@ -36,7 +36,7 @@ export interface QueryInfo {
 }
 export interface QueryInfoExtended extends QueryInfo {
     ids: Id[];
-    items: ServiceInstance<AnyData>[];
+    items: AnyData | ServiceInstance<AnyData>[];
     total: number;
     queriedAt: number;
     queryState: PaginationStateQuery;

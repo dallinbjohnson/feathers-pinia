@@ -3,6 +3,7 @@ import type { MaybeRef } from '@vueuse/core';
 import type { AnyData } from '../types.js';
 export interface UseServiceStoreOptions {
     idField: string;
+    servicePath: string;
     defaultLimit?: number;
     whitelist?: string[];
     paramsForServer?: string[];
@@ -54,6 +55,7 @@ export declare function useServiceStore<M extends AnyData, Q extends Query>(_opt
     clearAllPending: () => void;
     new: <N extends M>(this: any, data: N) => any;
     idField: string;
+    servicePath: string;
     isSsr: import("vue-demi").ComputedRef<boolean>;
     defaultLimit: number | undefined;
     itemsById: import("../types.js").ById<M>;
@@ -81,6 +83,11 @@ export declare function useServiceStore<M extends AnyData, Q extends Query>(_opt
     patchInStore: (_idOrData: MaybeRef<import("@feathersjs/feathers").Id | M | M[] | null>, _data?: MaybeRef<AnyData>, _params?: MaybeRef<import("../types.js").Params<Q>>) => any;
     removeFromStore: (data: M | M[] | null, params?: import("../types.js").Params<Q> | undefined) => M | M[] | null;
     clearAll: () => void;
+    resultsByQid: Record<string, AnyData>;
+    getQid: (qid: string) => AnyData;
+    setQid: (qid: string, data: any) => void;
+    clearQid: (qid: string) => void;
+    clearAllQids: () => void;
     whitelist: string[] | undefined;
     paramsForServer: string[] | undefined;
     pagination: import("vue-demi").Ref<import("./types.js").PaginationState>;

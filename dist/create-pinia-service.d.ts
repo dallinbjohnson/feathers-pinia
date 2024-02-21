@@ -11,16 +11,16 @@ interface PiniaServiceOptions {
 type SvcResult<S extends FeathersService> = S extends {
     get: (...args: any[]) => Promise<infer T>;
 } ? T : never;
-type SvcParams<S extends FeathersService> = S extends {
+type SvcParams<S extends FeathersService> = (S extends {
     find: (params: infer T) => any;
-} ? T : never;
+} ? T : never) & Params<Query>;
 type SvcData<S extends FeathersService> = S extends {
     create: (data: (infer T)[]) => any;
 } ? T : never;
 type SvcPatchData<S extends FeathersService> = S extends {
     patch: (id: any, data: infer T) => any;
 } ? T : never;
-type SvcModel<S extends FeathersService> = S & ServiceInstance<SvcResult<S>>;
+type SvcModel<S extends FeathersService> = ServiceInstance<SvcResult<S>>;
 export declare class PiniaService<Svc extends FeathersService> {
     service: Svc;
     options: PiniaServiceOptions;
@@ -111,20 +111,7 @@ export declare class PiniaService<Svc extends FeathersService> {
     removeFromStore(id: Id, params?: MaybeRef<SvcParams<Svc>>): SvcModel<Svc>;
     removeFromStore(id: undefined | null, params: MaybeRef<SvcParams<Svc>>): SvcModel<Svc>[];
     useFind(params: ComputedRef<UseFindParams | null>, options?: UseFindOptions): {
-        paramsWithPagination: {
-            query: any;
-            qid?: string | undefined;
-            paginate?: boolean | import("./types.js").PaginationOptions | undefined;
-            provider?: string | undefined;
-            route?: Record<string, string> | undefined;
-            headers?: Record<string, any> | undefined;
-            temps?: boolean | undefined;
-            clones?: boolean | undefined;
-            ssr?: boolean | undefined;
-            skipGetIfExists?: boolean | undefined;
-            data?: any;
-            preserveSsr?: boolean | undefined;
-        };
+        paramsWithPagination: Params<Query>;
         isSsr: boolean;
         qid: string;
         data: SvcModel<Svc>[];
@@ -132,58 +119,19 @@ export declare class PiniaService<Svc extends FeathersService> {
         total: number;
         limit: number;
         skip: number;
-        currentQuery: {
-            ids: any;
-            items: AnyData | ServiceInstance<AnyData>[];
-            total: any;
-            queriedAt: any;
-            queryState: any;
-            ssr: any;
-            qid: string;
-            query: Query;
-            queryId: string;
-            queryParams: Query;
-            pageParams: {
-                $limit: MaybeRef<number>;
-                $skip: MaybeRef<number> | undefined;
-            } | undefined;
-            pageId: string | undefined;
-            isExpired: boolean;
-        } | null;
-        cachedQuery: {
-            ids: any;
-            items: AnyData | ServiceInstance<AnyData>[];
-            total: any;
-            queriedAt: any;
-            queryState: any;
-            ssr: any;
-            qid: string;
-            query: Query;
-            queryId: string;
-            queryParams: Query;
-            pageParams: {
-                $limit: MaybeRef<number>;
-                $skip: MaybeRef<number> | undefined;
-            } | undefined;
-            pageId: string | undefined;
-            isExpired: boolean;
-        } | null;
-        latestQuery: import("./types.js").QueryInfoExtended | null;
-        previousQuery: import("./types.js").QueryInfoExtended | null;
-        find: (p?: Params<Query> | undefined) => Promise<void>;
-        request: {
-            then: <TResult1 = import("./types.js").Paginated<AnyData>, TResult2 = never>(onfulfilled?: ((value: import("./types.js").Paginated<AnyData>) => TResult1 | PromiseLike<TResult1>) | null | undefined, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | null | undefined) => Promise<TResult1 | TResult2>;
-            catch: <TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | null | undefined) => Promise<import("./types.js").Paginated<AnyData> | TResult>;
-            finally: (onfinally?: (() => void) | null | undefined) => Promise<import("./types.js").Paginated<AnyData>>;
-            readonly [Symbol.toStringTag]: string;
-        } | null;
+        currentQuery: import("./types.js").ExtendedQueryInfo;
+        cachedQuery: import("./types.js").ExtendedQueryInfo;
+        latestQuery: import("./types.js").ExtendedQueryInfo;
+        previousQuery: import("./types.js").ExtendedQueryInfo;
+        find: () => Promise<void>;
+        request: Promise<import("./types.js").Paginated<SvcModel<Svc>>> | null;
         requestCount: number;
-        queryWhen: (_queryWhenFn: () => boolean) => void;
+        queryWhen: (queryWhenFn: () => boolean) => void;
         isPending: boolean;
         haveBeenRequested: boolean;
         haveLoaded: boolean;
         error: any;
-        clearError: () => null;
+        clearError: () => void;
         pageCount: number;
         currentPage: number;
         canPrev: boolean;
