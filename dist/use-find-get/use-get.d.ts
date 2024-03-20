@@ -1,10 +1,8 @@
 import type { Id } from '@feathersjs/feathers';
-import type { ComputedRef } from 'vue-demi';
 import type { MaybeRef } from '@vueuse/core';
-import type { AnyData } from '../types.js';
+import type { AnyData, MaybeRefOrComputed } from '../types.js';
 import type { UseFindGetDeps, UseGetParams } from './types.js';
-type MaybeComputed<M> = ComputedRef<M> | MaybeRef<M>;
-export declare function useGet<M = AnyData>(_id: MaybeComputed<Id | null>, _params: MaybeRef<UseGetParams> | undefined, deps: UseFindGetDeps): {
+export declare function useGet<M = AnyData>(_id: MaybeRefOrComputed<Id | null>, _params: MaybeRef<UseGetParams> | undefined, deps: UseFindGetDeps): {
     params: UseGetParams;
     isSsr: boolean;
     data: M | null;
@@ -25,4 +23,3 @@ export declare function useGet<M = AnyData>(_id: MaybeComputed<Id | null>, _para
     error: any;
     clearError: () => null;
 };
-export {};

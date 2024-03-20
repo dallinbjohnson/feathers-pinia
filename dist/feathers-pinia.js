@@ -1,19 +1,19 @@
-var xt = Object.defineProperty;
-var Jt = (e, t, r) => t in e ? xt(e, t, { enumerable: !0, configurable: !0, writable: !0, value: r }) : e[t] = r;
-var je = (e, t, r) => (Jt(e, typeof t != "symbol" ? t + "" : t, r), r);
-import { feathers as Kt } from "@feathersjs/feathers";
-import { defineStore as zt } from "pinia";
-import { unref as C, ref as j, isRef as K, computed as m, watch as Oe, reactive as ee, set as W, del as G } from "vue-demi";
+var Jt = Object.defineProperty;
+var Kt = (e, t, r) => t in e ? Jt(e, t, { enumerable: !0, configurable: !0, writable: !0, value: r }) : e[t] = r;
+var je = (e, t, r) => (Kt(e, typeof t != "symbol" ? t + "" : t, r), r);
+import { feathers as zt } from "@feathersjs/feathers";
+import { defineStore as Ht } from "pinia";
+import { unref as C, ref as j, isRef as K, computed as m, watch as Ie, reactive as ie, set as W, del as G } from "vue-demi";
 import { _ as se } from "@feathersjs/commons";
-import { sorter as Ht, select as Ye, filterQuery as Yt } from "@feathersjs/adapter-commons";
-import { reactive as Xt, ref as Zt, watch as er, unref as tr, isRef as rr } from "vue";
-import { BadRequest as nr } from "@feathersjs/errors";
-import { FetchClient as ir } from "@feathersjs/rest-client";
+import { sorter as Yt, select as Xe, filterQuery as Xt } from "@feathersjs/adapter-commons";
+import { reactive as Zt, ref as er, watch as tr, unref as rr, isRef as nr } from "vue";
+import { BadRequest as ir } from "@feathersjs/errors";
+import { FetchClient as sr } from "@feathersjs/rest-client";
 var ye = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {};
-function Ie(e) {
+function Oe(e) {
   return e && e.__esModule && Object.prototype.hasOwnProperty.call(e, "default") ? e.default : e;
 }
-var sr = function e(t, r) {
+var or = function e(t, r) {
   if (t === r)
     return !0;
   if (t && r && typeof t == "object" && typeof r == "object") {
@@ -48,8 +48,8 @@ var sr = function e(t, r) {
   }
   return t !== t && r !== r;
 };
-const Xe = /* @__PURE__ */ Ie(sr);
-var or = Function.prototype.toString, ke = Object.create, ur = Object.prototype.toString, ar = (
+const Ze = /* @__PURE__ */ Oe(or);
+var ur = Function.prototype.toString, ke = Object.create, ar = Object.prototype.toString, cr = (
   /** @class */
   function() {
     function e() {
@@ -64,154 +64,154 @@ var or = Function.prototype.toString, ke = Object.create, ur = Object.prototype.
     }, e;
   }()
 );
-function cr() {
-  return new ar();
-}
 function lr() {
+  return new cr();
+}
+function fr() {
   return /* @__PURE__ */ new WeakMap();
 }
-var fr = typeof WeakMap < "u" ? lr : cr;
+var dr = typeof WeakMap < "u" ? fr : lr;
 function Ne(e) {
   if (!e)
     return ke(null);
   var t = e.constructor;
   if (t === Object)
     return e === Object.prototype ? {} : ke(e);
-  if (~or.call(t).indexOf("[native code]"))
+  if (~ur.call(t).indexOf("[native code]"))
     try {
       return new t();
     } catch {
     }
   return ke(e);
 }
-function dr(e) {
+function pr(e) {
   var t = "";
   return e.global && (t += "g"), e.ignoreCase && (t += "i"), e.multiline && (t += "m"), e.unicode && (t += "u"), e.sticky && (t += "y"), t;
 }
-function pr(e) {
+function hr(e) {
   return e.flags;
 }
-var hr = /test/g.flags === "g" ? pr : dr;
-function ut(e) {
-  var t = ur.call(e);
+var vr = /test/g.flags === "g" ? hr : pr;
+function at(e) {
+  var t = ar.call(e);
   return t.substring(8, t.length - 1);
 }
-function vr(e) {
-  return e[Symbol.toStringTag] || ut(e);
+function yr(e) {
+  return e[Symbol.toStringTag] || at(e);
 }
-var yr = typeof Symbol < "u" ? vr : ut, mr = Object.defineProperty, gr = Object.getOwnPropertyDescriptor, at = Object.getOwnPropertyNames, De = Object.getOwnPropertySymbols, ct = Object.prototype, lt = ct.hasOwnProperty, Sr = ct.propertyIsEnumerable, ft = typeof De == "function";
+var mr = typeof Symbol < "u" ? yr : at, gr = Object.defineProperty, Sr = Object.getOwnPropertyDescriptor, ct = Object.getOwnPropertyNames, De = Object.getOwnPropertySymbols, lt = Object.prototype, ft = lt.hasOwnProperty, Ir = lt.propertyIsEnumerable, dt = typeof De == "function";
 function Or(e) {
-  return at(e).concat(De(e));
+  return ct(e).concat(De(e));
 }
-var Ir = ft ? Or : at;
+var br = dt ? Or : ct;
 function be(e, t, r) {
-  for (var n = Ir(e), i = 0, o = n.length, s = void 0, u = void 0; i < o; ++i)
+  for (var n = br(e), i = 0, o = n.length, s = void 0, u = void 0; i < o; ++i)
     if (s = n[i], !(s === "callee" || s === "caller")) {
-      if (u = gr(e, s), !u) {
+      if (u = Sr(e, s), !u) {
         t[s] = r.copier(e[s], r);
         continue;
       }
       !u.get && !u.set && (u.value = r.copier(u.value, r));
       try {
-        mr(t, s, u);
+        gr(t, s, u);
       } catch {
         t[s] = u.value;
       }
     }
   return t;
 }
-function br(e, t) {
+function wr(e, t) {
   var r = new t.Constructor();
   t.cache.set(e, r);
   for (var n = 0, i = e.length; n < i; ++n)
     r[n] = t.copier(e[n], t);
   return r;
 }
-function wr(e, t) {
+function _r(e, t) {
   var r = new t.Constructor();
   return t.cache.set(e, r), be(e, r, t);
 }
-function dt(e, t) {
+function pt(e, t) {
   return e.slice(0);
 }
-function _r(e, t) {
+function $r(e, t) {
   return e.slice(0, e.size, e.type);
 }
-function $r(e, t) {
-  return new t.Constructor(dt(e.buffer));
-}
 function Pr(e, t) {
+  return new t.Constructor(pt(e.buffer));
+}
+function jr(e, t) {
   return new t.Constructor(e.getTime());
 }
-function pt(e, t) {
+function ht(e, t) {
   var r = new t.Constructor();
   return t.cache.set(e, r), e.forEach(function(n, i) {
     r.set(i, t.copier(n, t));
   }), r;
 }
-function jr(e, t) {
-  return be(e, pt(e, t), t);
-}
 function kr(e, t) {
-  var r = Ne(t.prototype);
-  t.cache.set(e, r);
-  for (var n in e)
-    lt.call(e, n) && (r[n] = t.copier(e[n], t));
-  return r;
+  return be(e, ht(e, t), t);
 }
 function Er(e, t) {
   var r = Ne(t.prototype);
   t.cache.set(e, r);
   for (var n in e)
-    lt.call(e, n) && (r[n] = t.copier(e[n], t));
-  for (var i = De(e), o = 0, s = i.length, u = void 0; o < s; ++o)
-    u = i[o], Sr.call(e, u) && (r[u] = t.copier(e[u], t));
+    ft.call(e, n) && (r[n] = t.copier(e[n], t));
   return r;
 }
-var Ar = ft ? Er : kr;
-function qr(e, t) {
+function Ar(e, t) {
+  var r = Ne(t.prototype);
+  t.cache.set(e, r);
+  for (var n in e)
+    ft.call(e, n) && (r[n] = t.copier(e[n], t));
+  for (var i = De(e), o = 0, s = i.length, u = void 0; o < s; ++o)
+    u = i[o], Ir.call(e, u) && (r[u] = t.copier(e[u], t));
+  return r;
+}
+var qr = dt ? Ar : Er;
+function Fr(e, t) {
   var r = Ne(t.prototype);
   return t.cache.set(e, r), be(e, r, t);
 }
 function Ee(e, t) {
   return new t.Constructor(e.valueOf());
 }
-function Fr(e, t) {
-  var r = new t.Constructor(e.source, hr(e));
+function Cr(e, t) {
+  var r = new t.Constructor(e.source, vr(e));
   return r.lastIndex = e.lastIndex, r;
 }
 function me(e, t) {
   return e;
 }
-function ht(e, t) {
+function vt(e, t) {
   var r = new t.Constructor();
   return t.cache.set(e, r), e.forEach(function(n) {
     r.add(t.copier(n, t));
   }), r;
 }
-function Cr(e, t) {
-  return be(e, ht(e, t), t);
+function Tr(e, t) {
+  return be(e, vt(e, t), t);
 }
-var Tr = Array.isArray, Re = Object.assign, Lr = Object.getPrototypeOf || function(e) {
+var Lr = Array.isArray, Re = Object.assign, Br = Object.getPrototypeOf || function(e) {
   return e.__proto__;
-}, vt = {
-  array: br,
-  arrayBuffer: dt,
-  blob: _r,
-  dataView: $r,
-  date: Pr,
-  error: me,
-  map: pt,
-  object: Ar,
-  regExp: Fr,
-  set: ht
-}, Br = Re({}, vt, {
+}, yt = {
   array: wr,
-  map: jr,
+  arrayBuffer: pt,
+  blob: $r,
+  dataView: Pr,
+  date: jr,
+  error: me,
+  map: ht,
   object: qr,
-  set: Cr
+  regExp: Cr,
+  set: vt
+}, Mr = Re({}, yt, {
+  array: _r,
+  map: kr,
+  object: Fr,
+  set: Tr
 });
-function Mr(e) {
+function Nr(e) {
   return {
     Arguments: e.object,
     Array: e.array,
@@ -242,33 +242,33 @@ function Mr(e) {
     Uint64Array: e.arrayBuffer
   };
 }
-function yt(e) {
-  var t = Re({}, vt, e), r = Mr(t), n = r.Array, i = r.Object;
+function mt(e) {
+  var t = Re({}, yt, e), r = Nr(t), n = r.Array, i = r.Object;
   function o(s, u) {
     if (u.prototype = u.Constructor = void 0, !s || typeof s != "object")
       return s;
     if (u.cache.has(s))
       return u.cache.get(s);
-    if (u.prototype = Lr(s), u.Constructor = u.prototype && u.prototype.constructor, !u.Constructor || u.Constructor === Object)
+    if (u.prototype = Br(s), u.Constructor = u.prototype && u.prototype.constructor, !u.Constructor || u.Constructor === Object)
       return i(s, u);
-    if (Tr(s))
+    if (Lr(s))
       return n(s, u);
-    var a = r[yr(s)];
+    var a = r[mr(s)];
     return a ? a(s, u) : typeof s.then == "function" ? s : i(s, u);
   }
   return function(u) {
     return o(u, {
       Constructor: void 0,
-      cache: fr(),
+      cache: dr(),
       copier: o,
       prototype: void 0
     });
   };
 }
-function Nr(e) {
-  return yt(Re({}, Br, e));
+function Dr(e) {
+  return mt(Re({}, Mr, e));
 }
-var Ze = Nr({}), te = yt({});
+var et = Dr({}), te = mt({});
 function de(e, t) {
   return Object.keys(t).forEach((r) => {
     Object.defineProperty(e, r, {
@@ -278,7 +278,7 @@ function de(e, t) {
     });
   }), e;
 }
-function mt(e, t) {
+function gt(e, t) {
   return Object.keys(t).forEach((r) => {
     Object.defineProperty(e, r, {
       enumerable: !1,
@@ -287,7 +287,7 @@ function mt(e, t) {
     });
   }), e;
 }
-function zi(e, t) {
+function Hi(e, t) {
   return Object.keys(t).forEach((r) => {
     Object.defineProperty(e, r, {
       enumerable: !1,
@@ -296,7 +296,7 @@ function zi(e, t) {
     });
   }), e;
 }
-function ie(e, t) {
+function ne(e, t) {
   return t && (Array.isArray(t) ? t.map((r) => e.new(r)) : t && Array.isArray(t.data) ? (t.data = t.data.map((r) => e.new(r)), t) : e.new(t));
 }
 function Ae({ queryInfo: e, service: t, store: r, qid: n }) {
@@ -306,13 +306,13 @@ function Ae({ queryInfo: e, service: t, store: r, qid: n }) {
   const { total: s } = o, u = o[e.pageId];
   if (!u)
     return null;
-  const { ids: a, queriedAt: c, ssr: l } = u, d = a.map((S) => r.itemsById[S]).filter((S) => S), g = ie(t, d);
-  return { ...e, ids: a, items: g, total: s, queriedAt: c, queryState: o, ssr: l } || null;
+  const { ids: a, queriedAt: c, ssr: l } = u, d = a.map((I) => r.itemsById[I]).filter((I) => I), S = ne(t, d);
+  return { ...e, ids: a, items: S, total: s, queriedAt: c, queryState: o, ssr: l } || null;
 }
 function z(e, t) {
   return Object.prototype.hasOwnProperty.call(e, t);
 }
-function Z(e) {
+function ee(e) {
   const t = Array.isArray(e);
   return { items: t ? e : [e], isArray: t };
 }
@@ -322,12 +322,12 @@ function Fe(e, t) {
   const n = (typeof t == "string" ? [t] : Array.isArray(t) ? t : Object.keys(t || e)).map((i) => i.toString().split(".")[0]);
   return se.pick(e, ...n);
 }
-function gt(e, t, r) {
+function St(e, t, r) {
   const n = Fe(e, r), i = Fe(t, r);
-  return typeof r != "string" && !Array.isArray(r) && Object.assign(i, r), Xe(n, i) ? {} : Object.keys(i).reduce((u, a) => (Xe(e[a], i[a]) || (u[a] = i[a]), u), {});
+  return typeof r != "string" && !Array.isArray(r) && Object.assign(i, r), Ze(n, i) ? {} : Object.keys(i).reduce((u, a) => (Ze(e[a], i[a]) || (u[a] = i[a]), u), {});
 }
-function Dr(e, t, r = "__tempId") {
-  const { items: n, isArray: i } = Z(e), { items: o } = Z(t);
+function Rr(e, t, r = "__tempId") {
+  const { items: n, isArray: i } = ee(e), { items: o } = ee(t);
   return o.forEach((s, u) => {
     const a = n[u][r];
     a && de(s, { [r]: a });
@@ -346,13 +346,13 @@ function ge(e, t) {
       return qe(e._id);
   }
 }
-function ne(e) {
+function Z(e) {
   return e ? te(C(e)) : {};
 }
 function ce(e) {
   return new Promise((t) => setTimeout(t, e));
 }
-function et() {
+function tt() {
   const e = j(0);
   return { count: e, add: () => {
     e.value = e.value + 1;
@@ -360,26 +360,26 @@ function et() {
     e.value = e.value === 0 ? 0 : e.value - 1;
   } };
 }
-const Rr = (e) => e !== null && typeof e == "object", Qr = Array.isArray;
-function St(e) {
+const Qr = (e) => e !== null && typeof e == "object", Wr = Array.isArray;
+function It(e) {
   return e !== null && !K(e) && typeof e == "object" ? Q(e) : C(e);
 }
-const Wr = (e) => e.map(St);
-function Gr(e) {
+const Gr = (e) => e.map(It);
+function Ur(e) {
   const t = {};
   return Object.keys(e).forEach((r) => {
-    t[r] = St(e[r]);
+    t[r] = It(e[r]);
   }), t;
 }
 function Q(e) {
   const t = K(e) ? C(e) : e;
-  return Rr(t) ? Qr(t) ? Wr(t) : Gr(t) : t;
+  return Qr(t) ? Wr(t) ? Gr(t) : Ur(t) : t;
 }
-function Hi(e, t) {
+function Yi(e, t) {
   const r = Object.keys(t), n = se.omit(e, ...r);
   return Object.assign(t, te(n));
 }
-function Ur(e, t) {
+function Vr(e, t) {
   if (!e)
     return e;
   const r = (n) => t.createInStore(n);
@@ -391,10 +391,10 @@ function Ot(e, t, r) {
     return r(this);
   } : n.value = r, Object.defineProperty(e, t, n);
 }
-function Vr(e, t) {
+function xr(e, t) {
   Object.keys(t).forEach((r) => Ot(e, r, t[r]));
 }
-const xr = [
+const Jr = [
   "update",
   "hooks",
   "setMaxListeners",
@@ -413,13 +413,13 @@ const xr = [
   "listenerCount",
   "on"
 ];
-function tt(e) {
+function rt(e) {
   return typeof e == "function" ? e() : C(e);
 }
 typeof WorkerGlobalScope < "u" && globalThis instanceof WorkerGlobalScope;
-const rt = () => {
+const nt = () => {
 };
-function Jr(e, t) {
+function Kr(e, t) {
   function r(...n) {
     return new Promise((i, o) => {
       Promise.resolve(e(() => t.apply(this, n), { fn: t, thisArg: this, args: n })).then(i).catch(o);
@@ -427,13 +427,13 @@ function Jr(e, t) {
   }
   return r;
 }
-function Kr(e, t = {}) {
-  let r, n, i = rt;
+function zr(e, t = {}) {
+  let r, n, i = nt;
   const o = (u) => {
-    clearTimeout(u), i(), i = rt;
+    clearTimeout(u), i(), i = nt;
   };
   return (u) => {
-    const a = tt(e), c = tt(t.maxWait);
+    const a = rt(e), c = rt(t.maxWait);
     return r && o(r), a <= 0 || c !== void 0 && c <= 0 ? (n && (o(n), n = null), Promise.resolve(u())) : new Promise((l, d) => {
       i = t.rejectOnCancel ? d : l, c && !n && (n = setTimeout(() => {
         r && o(r), n = null, l(u());
@@ -443,13 +443,13 @@ function Kr(e, t = {}) {
     });
   };
 }
-function zr(e, t = 200, r = {}) {
-  return Jr(
-    Kr(t, r),
+function Hr(e, t = 200, r = {}) {
+  return Kr(
+    zr(t, r),
     e
   );
 }
-var Hr = function(e, t) {
+var Yr = function(e, t) {
   t || (t = {}), typeof t == "function" && (t = { cmp: t });
   var r = typeof t.cycles == "boolean" ? t.cycles : !1, n = t.cmp && /* @__PURE__ */ function(o) {
     return function(s) {
@@ -480,55 +480,55 @@ var Hr = function(e, t) {
       }
       var c = i.push(s) - 1, l = Object.keys(s).sort(n && n(s));
       for (a = "", u = 0; u < l.length; u++) {
-        var d = l[u], g = o(s[d]);
-        g && (a && (a += ","), a += JSON.stringify(d) + ":" + g);
+        var d = l[u], S = o(s[d]);
+        S && (a && (a += ","), a += JSON.stringify(d) + ":" + S);
       }
       return i.splice(c, 1), "{" + a + "}";
     }
   }(e);
 };
-const Se = /* @__PURE__ */ Ie(Hr);
-function Yr(e, t) {
+const Se = /* @__PURE__ */ Oe(Yr);
+function Xr(e, t) {
   const { queryId: r, pageId: n } = t, i = e[r], o = i && i[n];
   return o && o.ids || [];
 }
-function Xr(e, t, r) {
+function Zr(e, t, r) {
   const n = r.qid || "default", i = e.pagination[n] || {}, o = e.getQueryInfo(r);
-  return Yr(i, o).map((a) => t.getFromStore(a).value).filter((a) => a);
+  return Xr(i, o).map((a) => t.getFromStore(a).value).filter((a) => a);
 }
-function Zr(e, t) {
+function en(e, t) {
   const { queryId: r } = t, n = e[r] || {};
   return [...new Set(Object.keys(n).filter((o) => !["total", "queryParams"].includes(o)).reduce((o, s) => {
     var u;
     return o = o.concat(((u = n == null ? void 0 : n[s]) == null ? void 0 : u.ids) || []), o;
   }, []))] || [];
 }
-function en(e, t, r) {
+function tn(e, t, r) {
   const n = r.qid || "default", i = e.pagination[n] || {}, o = e.getQueryInfo(r);
-  return Zr(i, o).map((a) => t.getFromStore(a).value).filter((a) => a);
+  return en(i, o).map((a) => t.getFromStore(a).value).filter((a) => a);
 }
-function tn(e) {
+function rn(e) {
   const { limit: t, skip: r, total: n, request: i } = e, o = m(() => n.value ? Math.ceil(n.value / t.value) : 1), s = m({
-    set(v) {
-      v < 1 ? v = 1 : v > o.value && (v = o.value);
-      const $ = t.value * Math.floor(v - 1);
+    set(h) {
+      h < 1 ? h = 1 : h > o.value && (h = o.value);
+      const $ = t.value * Math.floor(h - 1);
       r.value = $;
     },
     get() {
-      const v = r.value || 0;
-      return o.value === 0 ? 0 : Math.floor(v / t.value + 1);
+      const h = r.value || 0;
+      return o.value === 0 ? 0 : Math.floor(h / t.value + 1);
     }
   }), u = m(() => s.value - 1 > 0), a = m(() => s.value < o.value), c = async () => {
     i != null && i.value && await i.value;
   };
-  return { pageCount: o, currentPage: s, canPrev: u, canNext: a, toStart: async () => (s.value = 1, await ce(0), c()), toEnd: async () => (s.value = o.value, await ce(0), c()), toPage: async (v) => (s.value = v, await ce(0), c()), next: async () => (s.value++, await ce(0), c()), prev: async () => (s.value--, await ce(0), c()) };
+  return { pageCount: o, currentPage: s, canPrev: u, canNext: a, toStart: async () => (s.value = 1, await ce(0), c()), toEnd: async () => (s.value = o.value, await ce(0), c()), toPage: async (h) => (s.value = h, await ce(0), c()), next: async () => (s.value++, await ce(0), c()), prev: async () => (s.value--, await ce(0), c()) };
 }
-function rn(e, t = {}, r) {
-  var Je, Ke, ze, He;
+function nn(e, t = {}, r) {
+  var Ke, ze, He, Ye;
   const { pagination: n, debounce: i = 100, immediate: o = !0, watch: s = !0, paginateOn: u = "client" } = t, { service: a } = r, { store: c } = a, l = m(() => {
     var k;
     return ((k = e.value) == null ? void 0 : k.qid) || "default";
-  }), d = (n == null ? void 0 : n.limit) || j(((Ke = (Je = e.value) == null ? void 0 : Je.query) == null ? void 0 : Ke.$limit) || c.defaultLimit), g = (n == null ? void 0 : n.skip) || j(((He = (ze = e.value) == null ? void 0 : ze.query) == null ? void 0 : He.$skip) || 0), f = m(() => {
+  }), d = (n == null ? void 0 : n.limit) || j(((ze = (Ke = e.value) == null ? void 0 : Ke.query) == null ? void 0 : ze.$limit) || c.defaultLimit), S = (n == null ? void 0 : n.skip) || j(((Ye = (He = e.value) == null ? void 0 : He.query) == null ? void 0 : Ye.$skip) || 0), f = m(() => {
     var T;
     const k = Q(((T = e.value) == null ? void 0 : T.query) || {});
     return {
@@ -536,19 +536,19 @@ function rn(e, t = {}, r) {
       query: {
         ...k,
         $limit: d.value,
-        $skip: g.value
+        $skip: S.value
       }
     };
-  }), S = m(() => {
+  }), I = m(() => {
     var re;
     const k = Q(((re = e.value) == null ? void 0 : re.query) || {}), T = se.omit(k, "$limit", "$skip");
     return { ...e.value, query: T };
-  }), v = j(!1), $ = j(!1), O = j(!1), h = j(null), _ = () => h.value = null, y = j(Q(e.value || {}));
-  function I() {
+  }), h = j(!1), $ = j(!1), O = j(!1), v = j(null), _ = () => v.value = null, y = j(Q(e.value || {}));
+  function b() {
     Se(y.value) !== Se(f.value) && (y.value = f.value);
   }
   let p = () => !0;
-  const b = (k) => {
+  const g = (k) => {
     p = k;
   }, w = m(() => {
     if (!c.pagination[l.value])
@@ -560,14 +560,14 @@ function rn(e, t = {}, r) {
       return null;
     const T = c.getQueryInfo(f.value);
     return Ae({ queryInfo: T, service: a, store: c, qid: l });
-  }), E = m(() => (v.value ? w.value : P.value) == null && u !== "client" ? [] : u === "server" ? en(c, a, y.value) : a.findInStore(Q(S.value)).data.filter((D) => D)), q = m(() => {
-    const k = v.value ? w.value : P.value;
+  }), E = m(() => (h.value ? w.value : P.value) == null && u !== "client" ? [] : u === "server" ? tn(c, a, y.value) : a.findInStore(Q(I.value)).data.filter((R) => R)), q = m(() => {
+    const k = h.value ? w.value : P.value;
     if (k == null)
       return [];
-    const T = E.value, D = k.items.find((Pe) => Pe), re = T.findIndex((Pe) => Pe[c.idField] === D[c.idField]), ve = Math.min(re, g.value);
+    const T = E.value, R = k.items.find((Pe) => Pe), re = T.findIndex((Pe) => Pe[c.idField] === R[c.idField]), ve = Math.min(re, S.value);
     return T.slice(0, ve);
   }), N = m(() => {
-    const k = q.value, T = g.value + (k.length - g.value);
+    const k = q.value, T = S.value + (k.length - S.value);
     return {
       ...f.value,
       query: {
@@ -576,57 +576,57 @@ function rn(e, t = {}, r) {
         $skip: T
       }
     };
-  }), F = m(() => u === "server" ? Xr(c, a, y.value) : u === "hybrid" ? a.findInStore(Q(N)).data.filter((T) => T) : a.findInStore(Q(f)).data.filter((T) => T)), M = j([]), A = m(() => M.value[M.value.length - 1] || null), L = m(() => M.value[M.value.length - 2] || null), J = j(0), Y = j(null);
+  }), F = m(() => u === "server" ? Zr(c, a, y.value) : u === "hybrid" ? a.findInStore(Q(N)).data.filter((T) => T) : a.findInStore(Q(f)).data.filter((T) => T)), M = j([]), A = m(() => M.value[M.value.length - 1] || null), L = m(() => M.value[M.value.length - 2] || null), J = j(0), Y = j(null);
   function pe() {
     var k;
-    (k = P.value) != null && k.ssr || ($.value || ($.value = !0), _(), v.value || (v.value = !0), O.value && (O.value = !1));
+    (k = P.value) != null && k.ssr || ($.value || ($.value = !0), _(), h.value || (h.value = !0), O.value && (O.value = !1));
   }
   async function $e(k) {
     const T = C(
-      k ?? (u === "client" ? S.value : f.value)
+      k ?? (u === "client" ? I.value : f.value)
     );
     if (!p())
       return Promise.resolve({ data: [] });
     pe(), J.value++;
     try {
-      const D = await a.find(T);
-      if (D.total) {
+      const R = await a.find(T);
+      if (R.total) {
         const re = c.getQueryInfo(f.value), ve = Ae({ queryInfo: re, service: a, store: c, qid: l });
         ve && M.value.push(ve), M.value.length > 2 && M.value.shift();
       }
-      return O.value = !0, D;
-    } catch (D) {
-      throw h.value = D, D;
+      return O.value = !0, R;
+    } catch (R) {
+      throw v.value = R, R;
     } finally {
-      v.value = !1;
+      h.value = !1;
     }
   }
-  const xe = zr($e, i), R = async (k) => {
-    e.value !== null && (P.value && I(), p() && pe(), Y.value = xe(k), await Y.value, I());
+  const xe = Hr($e, i), D = async (k) => {
+    e.value !== null && (P.value && b(), p() && pe(), Y.value = xe(k), await Y.value, b());
   }, X = m(() => {
     if (["server", "hybrid"].includes(u)) {
       const k = P.value || w.value;
       return (k == null ? void 0 : k.total) || 0;
     } else
-      return a.countInStore(S.value).value;
-  }), he = tn({ limit: d, skip: g, total: X, request: Y }), { pageCount: Mt, currentPage: Nt, canPrev: Dt, canNext: Rt, toStart: Qt, toEnd: Wt, toPage: Gt, next: Ut, prev: Vt } = he;
-  return ["server", "hybrid"].includes(u) && s && (Oe(
+      return a.countInStore(I.value).value;
+  }), he = rn({ limit: d, skip: S, total: X, request: Y }), { pageCount: Nt, currentPage: Dt, canPrev: Rt, canNext: Qt, toStart: Wt, toEnd: Gt, toPage: Ut, next: Vt, prev: xt } = he, Je = m(() => (setTimeout(() => {
+    j(X.value);
+  }, 0), c.isSsr));
+  return Je.value ? o && D() : ["server", "hybrid"].includes(u) && s && (Ie(
     f,
     () => {
-      R();
+      D();
     },
     { immediate: !1, flush: "sync" }
-  ), o && R()), u === "server" && a.on && (a.on("created", () => {
-    R();
+  ), o && D()), u === "server" && a.on && (a.on("created", () => {
+    D();
   }), a.on("patched", () => {
-    R();
+    D();
   }), a.on("removed", () => {
-    R();
-  })), ee({
+    D();
+  })), ie({
     paramsWithPagination: f,
-    isSsr: m(() => (setTimeout(() => {
-      j(X.value);
-    }, 0), c.isSsr)),
+    isSsr: Je,
     // ComputedRef<boolean>
     qid: l,
     // WritableComputedRef<string>
@@ -639,7 +639,7 @@ function rn(e, t = {}, r) {
     // ComputedRef<number>
     limit: d,
     // Ref<number>
-    skip: g,
+    skip: S,
     // Ref<number>
     // Queries
     currentQuery: P,
@@ -651,55 +651,55 @@ function rn(e, t = {}, r) {
     previousQuery: L,
     // ComputedRef<QueryInfo | null>
     // Requests & Watching
-    find: R,
+    find: D,
     // FindFn<M>
     request: Y,
     // Ref<Promise<Paginated<M>>>
     requestCount: J,
     // Ref<number>
-    queryWhen: b,
+    queryWhen: g,
     // (queryWhenFn: () => boolean) => void
     // Request State
-    isPending: m(() => v.value),
+    isPending: m(() => h.value),
     // ComputedRef<boolean>
     haveBeenRequested: m(() => $.value),
     // ComputedRef<boolean>
     haveLoaded: m(() => O.value),
     // ComputedRef<boolean>
-    error: m(() => h.value),
+    error: m(() => v.value),
     // ComputedRef<any>
     clearError: _,
     // () => void
     // Pagination Utils
-    pageCount: Mt,
+    pageCount: Nt,
     // Ref<number>
-    currentPage: Nt,
+    currentPage: Dt,
     // Ref<number>
-    canPrev: Dt,
+    canPrev: Rt,
     // ComputedRef<boolean>
-    canNext: Rt,
+    canNext: Qt,
     // ComputedRef<boolean>
-    next: Ut,
+    next: Vt,
     // () => Promise<void>
-    prev: Vt,
+    prev: xt,
     // () => Promise<void>
-    toStart: Qt,
+    toStart: Wt,
     // () => Promise<void>
-    toEnd: Wt,
+    toEnd: Gt,
     // () => Promise<void>
-    toPage: Gt
+    toPage: Ut
     // (page: number) => Promise<void>
   });
 }
-function nn(e, t = j({}), r) {
-  const { service: n } = r, i = K(e) ? e : j(e), o = K(t) ? t : j(t), { immediate: s = !0, watch: u = !0 } = o.value, a = m(() => n.store.isSsr), c = j(!1), l = j(!1), d = j(null), g = () => d.value = null, f = j([]), S = m(() => f.value.length && f.value[f.value.length - 1]), v = m(() => c.value && S.value != null ? n.store.getFromStore(S.value, o).value : n.store.getFromStore(i.value, o).value), $ = n.store.getFromStore, O = m(() => !!v.value);
-  let h = () => !0;
+function sn(e, t = j({}), r) {
+  const { service: n } = r, i = K(e) ? e : j(e), o = K(t) ? t : j(t), { immediate: s = !0, watch: u = !0 } = o.value, a = m(() => n.store.isSsr), c = j(!1), l = j(!1), d = j(null), S = () => d.value = null, f = j([]), I = m(() => f.value.length && f.value[f.value.length - 1]), h = m(() => c.value && I.value != null ? n.store.getFromStore(I.value, o).value : n.store.getFromStore(i.value, o).value), $ = n.store.getFromStore, O = m(() => !!h.value);
+  let v = () => !0;
   const _ = (w) => {
-    h = w;
-  }, y = j(0), I = j(null);
+    v = w;
+  }, y = j(0), b = j(null);
   async function p() {
     const w = C(i), P = C(o);
-    if (h()) {
+    if (v()) {
       if (w == null)
         return null;
       y.value++, l.value = !0, c.value = !0, d.value = null;
@@ -713,31 +713,31 @@ function nn(e, t = j({}), r) {
       }
     }
   }
-  async function b() {
-    return I.value = p(), await I.value;
+  async function g() {
+    return b.value = p(), await b.value;
   }
-  return u && Oe(
+  return a.value ? s && g() : u && Ie(
     i,
     async () => {
-      await b();
+      await g();
     },
-    { immediate: s }
-  ), ee({
+    { immediate: s, flush: "pre" }
+  ), ie({
     params: o,
     // Ref<GetClassParams>
     isSsr: a,
     // ComputedRef<boolean>
     // Data
-    data: v,
+    data: h,
     // ComputedRef<M | null>
     ids: f,
     // Ref<Id[]>
     getFromStore: $,
     // (id: Id | null, params: Params<Query>) => M | undefined
     // Requests & Watching
-    get: b,
+    get: g,
     // GetFn<M>
-    request: I,
+    request: b,
     // Ref<Promise<M | undefined>>
     requestCount: y,
     // Ref<number>
@@ -752,16 +752,16 @@ function nn(e, t = j({}), r) {
     // ComputedRef<boolean>
     error: m(() => d.value),
     // ComputedRef<any>
-    clearError: g
+    clearError: S
     // () => void
   });
 }
-class sn {
+class on {
   constructor(t, r) {
     je(this, "store");
     je(this, "servicePath", "");
     this.service = t, this.options = r, this.store = r.store, this.servicePath = r.servicePath;
-    const n = Object.getOwnPropertyNames(Object.getPrototypeOf(this)).concat(xr);
+    const n = Object.getOwnPropertyNames(Object.getPrototypeOf(this)).concat(Jr);
     for (const i in t)
       if (typeof t[i] == "function" && !n.includes(i)) {
         const o = this;
@@ -776,42 +776,43 @@ class sn {
    */
   new(t = {}) {
     const r = this.store.new(t);
-    return ee(r);
+    return ie(r);
   }
   async find(t) {
-    const r = ne(t);
+    const r = Z(t);
     return await this.service.find(r);
   }
   async findOne(t) {
-    const r = ne(t);
+    const r = Z(t);
     r.query = r.query || {}, r.query.$limit = 1;
     const n = await this.service.find(r);
     return (n.data || n)[0] || null;
   }
   async count(t) {
-    const r = ne(t);
+    const r = Z(t);
     return r.query = r.query || {}, r.query.$limit = 0, await this.service.find(r);
   }
   async get(t, r) {
-    const n = ne(r);
+    const n = Z(r);
     return await this.service.get(t, n);
   }
-  async create(t) {
-    return await this.service.create(t);
+  async create(t, r) {
+    const n = Z(r);
+    return await this.service.create(t, n);
   }
   async patch(t, r, n) {
-    const i = ne(n);
+    const i = Z(n);
     return await this.service.patch(t, r, i);
   }
   async remove(t, r) {
-    const n = ne(r);
+    const n = Z(r);
     return await this.service.remove(C(t), n);
   }
   findInStore(t) {
     const r = this.store.findInStore(t);
-    return ee({
+    return ie({
       ...r,
-      data: m(() => r.data.map((n) => ie(this, n)))
+      data: m(() => r.data.map((n) => ne(this, n)))
     });
   }
   findOneInStore(t) {
@@ -840,11 +841,11 @@ class sn {
   /* hybrid methods */
   useFind(t, r) {
     const n = K(t) ? t : j(t);
-    return rn(n, r, { service: this });
+    return nn(n, r, { service: this });
   }
   useGet(t, r = j({})) {
     const n = K(t) ? t : j(t), i = K(r) ? r : j(r);
-    return nn(n, i, { service: this });
+    return sn(n, i, { service: this });
   }
   useGetOnce(t, r = {}) {
     const n = K(r) ? r : j(r);
@@ -863,7 +864,7 @@ class sn {
     return this.service.removeListener(t, r);
   }
 }
-var It = { exports: {} };
+var bt = { exports: {} };
 /*!
  * isomorphic-mongo-objectid - v@version@
  * Pure JavaScript implementation of mongodb ObjectId for the browser and server
@@ -901,10 +902,10 @@ var It = { exports: {} };
       ].join("");
     }, e.exports = s;
   })();
-})(It);
-var on = It.exports, un = on;
-const an = /* @__PURE__ */ Ie(un);
-function bt(e, t) {
+})(bt);
+var un = bt.exports, an = un;
+const cn = /* @__PURE__ */ Oe(an);
+function wt(e, t) {
   if (e.__isStoreInstance)
     return e;
   const { idField: r, clonesById: n, clone: i, commit: o, reset: s, createInStore: u, removeFromStore: a } = t, c = e.__isClone || !1;
@@ -918,13 +919,13 @@ function bt(e, t) {
     __isStoreInstance: !0,
     __isClone: c,
     __idField: r,
-    __tempId: e[r] == null && e.__tempId == null ? new an().toString() : e.__tempId || void 0,
+    __tempId: e[r] == null && e.__tempId == null ? new cn().toString() : e.__tempId || void 0,
     hasClone() {
       const d = this[this.__idField] || this.__tempId;
-      return n[d] || null;
+      return n.value[d] || null;
     },
-    clone(d = {}, g = {}) {
-      return i(this, d, g);
+    clone(d = {}, S = {}) {
+      return i(this, d, S);
     },
     commit(d = {}) {
       return o(this, d);
@@ -974,15 +975,15 @@ function B(e, t) {
 var Qe = function(e) {
   var t = "[object " + e + "]";
   return function(r) {
-    return cn(r) === t;
+    return ln(r) === t;
   };
-}, cn = function(e) {
+}, ln = function(e) {
   return Object.prototype.toString.call(e);
 }, oe = function(e) {
   return e instanceof Date ? e.getTime() : ue(e) ? e.map(oe) : e && typeof e.toJSON == "function" ? e.toJSON() : e;
-}, ln = function(e) {
+}, fn = function(e) {
   return e ?? null;
-}, ue = Qe("Array"), fn = Qe("Object"), dn = Qe("Function"), pn = function(e) {
+}, ue = Qe("Array"), dn = Qe("Object"), pn = Qe("Function"), hn = function(e) {
   return e && (e.constructor === Object || e.constructor === Array || e.constructor.toString() === "function Object() { [native code] }" || e.constructor.toString() === "function Array() { [native code] }") && !e.toJSON;
 }, Te = function(e, t) {
   if (e == null && e == t || e === t)
@@ -996,7 +997,7 @@ var Qe = function(e) {
       if (!Te(e[r], t[r]))
         return !1;
     return !0;
-  } else if (fn(e)) {
+  } else if (dn(e)) {
     if (Object.keys(e).length !== Object.keys(t).length)
       return !1;
     for (var i in e)
@@ -1048,7 +1049,7 @@ var Qe = function(e) {
       this.done = s, this.keep = u;
     }, t;
   }(U)
-), wt = (
+), _t = (
   /** @class */
   function(e) {
     B(t, e);
@@ -1058,7 +1059,7 @@ var Qe = function(e) {
     }
     return t;
   }(We)
-), hn = (
+), vn = (
   /** @class */
   function(e) {
     B(t, e);
@@ -1112,31 +1113,31 @@ var Qe = function(e) {
   }(U)
 ), we = function(e, t, r) {
   return new x(e, t, r);
-}, vn = function(e) {
+}, yn = function(e) {
   return function(t, r, n, i) {
     return e(t, r, n, i);
   };
 }, _e = function(e) {
-  return vn(function(t, r, n, i) {
+  return yn(function(t, r, n, i) {
     var o = typeof oe(t), s = e(t);
     return new x(function(u) {
-      var a = ln(u);
+      var a = fn(u);
       return typeof oe(a) === o && s(a);
     }, r, n, i);
   });
-}, yn = function(e, t, r, n) {
+}, mn = function(e, t, r, n) {
   var i = n.operations[e];
-  return i || _t(e), i(t, r, n, e);
-}, _t = function(e) {
+  return i || $t(e), i(t, r, n, e);
+}, $t = function(e) {
   throw new Error("Unsupported operation: " + e);
-}, $t = function(e, t) {
+}, Pt = function(e, t) {
   for (var r in e)
     if (t.operations.hasOwnProperty(r) || r.charAt(0) === "$")
       return !0;
   return !1;
-}, mn = function(e, t, r, n, i) {
-  if ($t(t, i)) {
-    var o = Pt(t, r, i), s = o[0], u = o[1];
+}, gn = function(e, t, r, n, i) {
+  if (Pt(t, i)) {
+    var o = jt(t, r, i), s = o[0], u = o[1];
     if (u.length)
       throw new Error("Property queries must contain only operations, or exact objects.");
     return new Be(e, t, n, i, s);
@@ -1149,26 +1150,26 @@ var Qe = function(e) {
   var n = r === void 0 ? {} : r, i = n.compare, o = n.operations, s = {
     compare: i || Te,
     operations: Object.assign({}, o || {})
-  }, u = Pt(e, null, s), a = u[0], c = u[1], l = [];
-  return a.length && l.push(new Be([], e, t, s, a)), l.push.apply(l, c), l.length === 1 ? l[0] : new hn(e, t, s, l);
-}, Pt = function(e, t, r) {
+  }, u = jt(e, null, s), a = u[0], c = u[1], l = [];
+  return a.length && l.push(new Be([], e, t, s, a)), l.push.apply(l, c), l.length === 1 ? l[0] : new vn(e, t, s, l);
+}, jt = function(e, t, r) {
   var n = [], i = [];
-  if (!pn(e))
+  if (!hn(e))
     return n.push(new x(e, e, r)), [n, i];
   for (var o in e)
     if (r.operations.hasOwnProperty(o)) {
-      var s = yn(o, e[o], e, r);
+      var s = mn(o, e[o], e, r);
       if (s && !s.propop && t && !r.operations[t])
         throw new Error("Malformed query. " + o + " cannot be matched against property.");
       s != null && n.push(s);
     } else
-      o.charAt(0) === "$" ? _t(o) : i.push(mn(o.split("."), e[o], o, e, r));
+      o.charAt(0) === "$" ? $t(o) : i.push(gn(o.split("."), e[o], o, e, r));
   return [n, i];
-}, gn = function(e) {
+}, Sn = function(e) {
   return function(t, r, n) {
     return e.reset(), e.next(t, r, n), e.keep;
   };
-}, Sn = (
+}, In = (
   /** @class */
   function(e) {
     B(t, e);
@@ -1210,7 +1211,7 @@ var Qe = function(e) {
         this.done = !1, this.keep = !1;
     }, t;
   }(U)
-), In = (
+), bn = (
   /** @class */
   function(e) {
     B(t, e);
@@ -1226,7 +1227,7 @@ var Qe = function(e) {
       this._queryOperation.next(r, n, i, o), this.done = this._queryOperation.done, this.keep = !this._queryOperation.keep;
     }, t;
   }(U)
-), jt = (
+), kt = (
   /** @class */
   function(e) {
     B(t, e);
@@ -1239,10 +1240,10 @@ var Qe = function(e) {
       ue(r) && r.length === this.params && (this.done = !0, this.keep = !0);
     }, t;
   }(U)
-), kt = function(e) {
+), Et = function(e) {
   if (e.length === 0)
     throw new Error("$and/$or/$nor must be a nonempty array");
-}, Et = (
+}, At = (
   /** @class */
   function(e) {
     B(t, e);
@@ -1252,7 +1253,7 @@ var Qe = function(e) {
     }
     return t.prototype.init = function() {
       var r = this;
-      kt(this.params), this._ops = this.params.map(function(n) {
+      Et(this.params), this._ops = this.params.map(function(n) {
         return ae(n, null, r.options);
       });
     }, t.prototype.reset = function() {
@@ -1270,7 +1271,7 @@ var Qe = function(e) {
       this.keep = s, this.done = o;
     }, t;
   }(U)
-), bn = (
+), wn = (
   /** @class */
   function(e) {
     B(t, e);
@@ -1281,8 +1282,8 @@ var Qe = function(e) {
     return t.prototype.next = function(r, n, i) {
       e.prototype.next.call(this, r, n, i), this.keep = !this.keep;
     }, t;
-  }(Et)
-), At = (
+  }(At)
+), qt = (
   /** @class */
   function(e) {
     B(t, e);
@@ -1293,7 +1294,7 @@ var Qe = function(e) {
     return t.prototype.init = function() {
       var r = this;
       this._testers = this.params.map(function(n) {
-        if ($t(n, r.options))
+        if (Pt(n, r.options))
           throw new Error("cannot nest $ under " + r.name.toLowerCase());
         return Ge(n, r.options.compare);
       });
@@ -1308,13 +1309,13 @@ var Qe = function(e) {
       this.keep = s, this.done = o;
     }, t;
   }(U)
-), wn = (
+), _n = (
   /** @class */
   function(e) {
     B(t, e);
     function t(r, n, i, o) {
       var s = e.call(this, r, n, i, o) || this;
-      return s.propop = !0, s._in = new At(r, n, i, o), s;
+      return s.propop = !0, s._in = new qt(r, n, i, o), s;
     }
     return t.prototype.next = function(r, n, i, o) {
       this._in.next(r, n, i), ue(i) && !o ? this._in.keep ? (this.keep = !1, this.done = !0) : n == i.length - 1 && (this.keep = !0, this.done = !0) : (this.keep = !this._in.keep, this.done = !0);
@@ -1322,7 +1323,7 @@ var Qe = function(e) {
       e.prototype.reset.call(this), this._in.reset();
     }, t;
   }(U)
-), _n = (
+), $n = (
   /** @class */
   function(e) {
     B(t, e);
@@ -1334,7 +1335,7 @@ var Qe = function(e) {
       i.hasOwnProperty(n) === this.params && (this.done = !0, this.keep = !0);
     }, t;
   }(U)
-), $n = (
+), Pn = (
   /** @class */
   function(e) {
     B(t, e);
@@ -1342,13 +1343,13 @@ var Qe = function(e) {
       var s = e.call(this, r, n, i, r.map(function(u) {
         return ae(u, n, i);
       }), o) || this;
-      return s.propop = !1, kt(r), s;
+      return s.propop = !1, Et(r), s;
     }
     return t.prototype.next = function(r, n, i, o) {
       this.childrenNext(r, n, i, o);
     }, t;
-  }(wt)
-), Pn = (
+  }(_t)
+), jn = (
   /** @class */
   function(e) {
     B(t, e);
@@ -1361,49 +1362,49 @@ var Qe = function(e) {
     return t.prototype.next = function(r, n, i, o) {
       this.childrenNext(r, n, i, o);
     }, t;
-  }(wt)
-), jn = function(e, t, r) {
+  }(_t)
+), kn = function(e, t, r) {
   return new x(e, t, r);
-}, kn = function(e, t, r, n) {
-  return new Sn(e, t, r, n);
 }, En = function(e, t, r, n) {
-  return new Et(e, t, r, n);
+  return new In(e, t, r, n);
 }, An = function(e, t, r, n) {
-  return new bn(e, t, r, n);
-}, qn = function(e, t, r, n) {
-  return new On(e, t, r, n);
-}, Fn = function(e, t, r, n) {
-  return new wn(e, t, r, n);
-}, Cn = function(e, t, r, n) {
   return new At(e, t, r, n);
-}, Tn = _e(function(e) {
+}, qn = function(e, t, r, n) {
+  return new wn(e, t, r, n);
+}, Fn = function(e, t, r, n) {
+  return new On(e, t, r, n);
+}, Cn = function(e, t, r, n) {
+  return new _n(e, t, r, n);
+}, Tn = function(e, t, r, n) {
+  return new qt(e, t, r, n);
+}, Ln = _e(function(e) {
   return function(t) {
     return t != null && t < e;
   };
-}), Ln = _e(function(e) {
+}), Bn = _e(function(e) {
   return function(t) {
     return t === e || t <= e;
   };
-}), Bn = _e(function(e) {
+}), Mn = _e(function(e) {
   return function(t) {
     return t != null && t > e;
   };
-}), Mn = _e(function(e) {
+}), Nn = _e(function(e) {
   return function(t) {
     return t === e || t >= e;
   };
-}), Nn = function(e, t, r) {
+}), Dn = function(e, t, r) {
   var n = e[0], i = e[1];
   return new x(function(o) {
     return oe(o) % n === i;
   }, t, r);
-}, Dn = function(e, t, r, n) {
-  return new _n(e, t, r, n);
-}, Rn = function(e, t, r) {
+}, Rn = function(e, t, r, n) {
+  return new $n(e, t, r, n);
+}, Qn = function(e, t, r) {
   return new x(new RegExp(e, t.$options), t, r);
-}, Qn = function(e, t, r, n) {
-  return new In(e, t, r, n);
-}, nt = {
+}, Wn = function(e, t, r, n) {
+  return new bn(e, t, r, n);
+}, it = {
   number: function(e) {
     return typeof e == "number";
   },
@@ -1422,26 +1423,26 @@ var Qe = function(e) {
   timestamp: function(e) {
     return e instanceof Date;
   }
-}, Wn = function(e, t, r) {
+}, Gn = function(e, t, r) {
   return new x(function(n) {
     if (typeof e == "string") {
-      if (!nt[e])
+      if (!it[e])
         throw new Error("Type alias does not exist");
-      return nt[e](n);
+      return it[e](n);
     }
     return n != null ? n instanceof e || n.constructor === e : !1;
   }, t, r);
-}, Gn = function(e, t, r, n) {
-  return new $n(e, t, r, n);
 }, Un = function(e, t, r, n) {
   return new Pn(e, t, r, n);
-}, Vn = function(e, t, r) {
-  return new jt(e, t, r, "$size");
-}, xn = function() {
+}, Vn = function(e, t, r, n) {
+  return new jn(e, t, r, n);
+}, xn = function(e, t, r) {
+  return new kt(e, t, r, "$size");
+}, Jn = function() {
   return null;
-}, Jn = function(e, t, r) {
+}, Kn = function(e, t, r) {
   var n;
-  if (dn(e))
+  if (pn(e))
     n = e;
   else if (!process.env.CSP_ENABLED)
     n = new Function("obj", "return " + e);
@@ -1450,68 +1451,68 @@ var Qe = function(e) {
   return new x(function(i) {
     return n.bind(i)(i);
   }, t, r);
-}, Kn = /* @__PURE__ */ Object.freeze({
+}, zn = /* @__PURE__ */ Object.freeze({
   __proto__: null,
-  $Size: jt,
-  $eq: jn,
-  $ne: kn,
-  $or: En,
-  $nor: An,
-  $elemMatch: qn,
-  $nin: Fn,
-  $in: Cn,
-  $lt: Tn,
-  $lte: Ln,
-  $gt: Bn,
-  $gte: Mn,
-  $mod: Nn,
-  $exists: Dn,
-  $regex: Rn,
-  $not: Qn,
-  $type: Wn,
-  $and: Gn,
-  $all: Un,
-  $size: Vn,
-  $options: xn,
-  $where: Jn
-}), zn = function(e, t, r) {
+  $Size: kt,
+  $eq: kn,
+  $ne: En,
+  $or: An,
+  $nor: qn,
+  $elemMatch: Fn,
+  $nin: Cn,
+  $in: Tn,
+  $lt: Ln,
+  $lte: Bn,
+  $gt: Mn,
+  $gte: Nn,
+  $mod: Dn,
+  $exists: Rn,
+  $regex: Qn,
+  $not: Wn,
+  $type: Gn,
+  $and: Un,
+  $all: Vn,
+  $size: xn,
+  $options: Jn,
+  $where: Kn
+}), Hn = function(e, t, r) {
   var n = r === void 0 ? {} : r, i = n.compare, o = n.operations;
   return ae(e, t, {
     compare: i,
-    operations: Object.assign({}, Kn, o || {})
+    operations: Object.assign({}, zn, o || {})
   });
-}, Hn = function(e, t) {
+}, Yn = function(e, t) {
   t === void 0 && (t = {});
-  var r = zn(e, null, t);
-  return gn(r);
+  var r = Hn(e, null, t);
+  return Sn(r);
 };
 function Ue(e, t, r = "g") {
   const n = ["/", ".", "*", "+", "?", "|", "(", ")", "[", "]", "{", "}", "\\"];
   return t = t.replace(new RegExp(`(\\${n.join("|\\")})`, r), "\\$1"), t = t.replace(/%/g, ".*").replace(/_/g, "."), RegExp(`^${t}$`, r).test(e);
 }
-function qt(e, t) {
+function Ft(e, t) {
   return Ue(e, t, "ig");
 }
-function Yn(e, t, r) {
+function Xn(e, t, r) {
   return we((n) => Ue(n, e), t, r);
 }
-function it(e, t, r) {
+function st(e, t, r) {
   return we((n) => !Ue(n, e), t, r);
 }
-function st(e, t, r) {
-  return we((n) => qt(n, e), t, r);
+function ot(e, t, r) {
+  return we((n) => Ft(n, e), t, r);
 }
-function Xn(e, t, r) {
-  return we((n) => !qt(n, e), t, r);
+function Zn(e, t, r) {
+  return we((n) => !Ft(n, e), t, r);
 }
-const Zn = {
-  $like: Yn,
-  $notLike: it,
-  $notlike: it,
-  $ilike: st,
-  $iLike: st,
-  $notILike: Xn
-}, ei = ["$sort", "$limit", "$skip", "$select"], ti = [
+const ei = {
+  $like: Xn,
+  $notLike: st,
+  $notlike: st,
+  $ilike: ot,
+  $iLike: ot,
+  $notILike: Zn
+}, ti = ["$sort", "$limit", "$skip", "$select"], ri = [
   "$in",
   "$nin",
   "$exists",
@@ -1527,7 +1528,7 @@ const Zn = {
   "$where",
   "$elemMatch"
 ];
-function Ft(e) {
+function Ct(e) {
   const {
     idField: t,
     itemStorage: r,
@@ -1537,90 +1538,90 @@ function Ft(e) {
     paramsForServer: s = [],
     whitelist: u = [],
     customSiftOperators: a = {}
-  } = e, c = Object.assign({}, Zn, a), l = m(() => ti.concat(u || []).concat(Object.keys(c))), d = (y, I = []) => {
+  } = e, c = Object.assign({}, ei, a), l = m(() => ri.concat(u || []).concat(Object.keys(c))), d = (y, b = []) => {
     y = { ...C(y) };
-    const p = s, b = se.omit(y.query || {}, ...p), { query: w, filters: P } = Yt(b, {
+    const p = s, g = se.omit(y.query || {}, ...p), { query: w, filters: P } = Xt(g, {
       operators: l.value
     });
-    let E = I.concat(r.list.value);
-    return n && y.temps && E.push(...n.list.value), P.$or && (w.$or = P.$or), P.$and && (w.$and = P.$and), E = E.filter(Hn(w, { operations: c })), { values: E, filters: P };
+    let E = b.concat(r.list.value);
+    return n && y.temps && E.push(...n.list.value), P.$or && (w.$or = P.$or), P.$and && (w.$and = P.$and), E = E.filter(Yn(w, { operations: c })), { values: E, filters: P };
   };
-  function g(y) {
-    const I = m(() => {
+  function S(y) {
+    const b = m(() => {
       const p = C(y);
       p.query && (p.query = Q(p.query));
-      const b = d(p), w = b.filters;
-      let P = b.values;
+      const g = d(p), w = g.filters;
+      let P = g.values;
       const E = P.length;
-      return w.$sort && P.sort(Ht(w.$sort)), w.$skip && (P = P.slice(w.$skip)), typeof w.$limit < "u" && (P = P.slice(0, w.$limit)), {
+      return w.$sort && P.sort(Yt(w.$sort)), w.$skip && (P = P.slice(w.$skip)), typeof w.$limit < "u" && (P = P.slice(0, w.$limit)), {
         total: E,
         limit: w.$limit || 0,
         skip: w.$skip || 0,
         data: p.clones ? P.map((q) => q.clone ? q.clone(void 0, { useExisting: !0 }) : q) : P
       };
     });
-    return ee({
-      total: m(() => I.value.total),
-      limit: m(() => I.value.limit),
-      skip: m(() => I.value.skip),
-      data: m(() => I.value.data)
+    return ie({
+      total: m(() => b.value.total),
+      limit: m(() => b.value.limit),
+      skip: m(() => b.value.skip),
+      data: m(() => b.value.data)
     });
   }
   function f(y) {
-    const I = g(y);
-    return m(() => I.data[0] || null);
+    const b = S(y);
+    return m(() => b.data[0] || null);
   }
-  function S(y) {
+  function I(y) {
     return m(() => {
       if (y = { ...C(y) }, !y.query)
         throw new Error("params must contain a query object");
-      return y.query = se.omit(y.query, ...ei), g(y).total;
+      return y.query = se.omit(y.query, ...ti), S(y).total;
     });
   }
-  const v = (y, I) => m(() => {
+  const h = (y, b) => m(() => {
     const p = C(y);
-    I = te(C(I) || {}), I.query && (I.query = Q(I.query));
-    let b = null;
-    const w = r.getItem(p) && Ye(I, t)(r.getItem(p)), P = n && n.getItem(p) && Ye(I, "__tempId")(n.getItem(p));
-    return w ? b = w : P && (b = P), I.clones && b.clone ? b.clone(void 0, { useExisting: !0 }) : b || null;
+    b = te(C(b) || {}), b.query && (b.query = Q(b.query));
+    let g = null;
+    const w = r.getItem(p) && Xe(b, t)(r.getItem(p)), P = n && n.getItem(p) && Xe(b, "__tempId")(n.getItem(p));
+    return w ? g = w : P && (g = P), b.clones && g.clone ? g.clone(void 0, { useExisting: !0 }) : g || null;
   });
   function $(y) {
-    const { items: I, isArray: p } = Z(C(y)), b = I.map((w) => o(C(w)));
-    return p ? b : b[0];
+    const { items: b, isArray: p } = ee(C(y)), g = b.map((w) => o(C(w)));
+    return p ? g : g[0];
   }
-  function O(y, I = {}, p = {}) {
-    const b = C(y), w = C(I), P = C(p);
+  function O(y, b = {}, p = {}) {
+    const g = C(y), w = C(b), P = C(p);
     function E(q) {
       return q.map((F) => {
-        if (F = C(F), (typeof F == "number" || typeof F == "string") && (F = v(F).value), F == null)
+        if (F = C(F), (typeof F == "number" || typeof F == "string") && (F = h(F).value), F == null)
           return null;
         const M = { ...F, ...w };
         return o(M);
       }).filter((F) => F);
     }
-    if (b === null) {
+    if (g === null) {
       if (P != null && P.query && !Object.keys(P == null ? void 0 : P.query).length)
         throw new Error(
           'cannot perform multiple patchInStore with an empty query. You must explicitly provide a query. To patch all items, try using a query that matches all items, like "{ id: { $exists: true } }"'
         );
-      const q = g(P).data;
+      const q = S(P).data;
       return E(q);
     } else {
-      const { items: q, isArray: N } = Z(b), F = E(q);
+      const { items: q, isArray: N } = ee(g), F = E(q);
       return N ? F : F[0];
     }
   }
-  function h(y, I) {
-    if (y === null && (I != null && I.query) && Object.keys(I == null ? void 0 : I.query).length) {
-      const p = i ? i.list.value : [], { values: b } = d(I, p);
-      return _(b);
+  function v(y, b) {
+    if (y === null && (b != null && b.query) && Object.keys(b == null ? void 0 : b.query).length) {
+      const p = i ? i.list.value : [], { values: g } = d(b, p);
+      return _(g);
     } else
       y !== null && _(y);
     return y;
   }
   function _(y) {
-    const { items: I } = Z(y);
-    return I.forEach((p) => {
+    const { items: b } = ee(y);
+    return b.forEach((p) => {
       if (typeof p == "string")
         r.removeItem(p), n == null || n.removeItem(p), i == null || i.removeItem(p);
       else {
@@ -1633,13 +1634,13 @@ function Ft(e) {
     }), y;
   }
   return {
-    findInStore: g,
+    findInStore: S,
     findOneInStore: f,
-    countInStore: S,
-    getFromStore: v,
+    countInStore: I,
+    getFromStore: h,
     createInStore: $,
     patchInStore: O,
-    removeFromStore: h
+    removeFromStore: v
   };
 }
 function Ve({
@@ -1648,39 +1649,39 @@ function Ve({
   beforeWrite: r = (i) => i,
   assign: n = (i, o) => Object.assign(i, o)
 }) {
-  const i = ee({}), o = m(() => Object.values(i)), s = m(() => Object.keys(i)), u = (h) => !!i[h], a = (h) => {
-    const _ = e(h);
+  const i = j({}), o = m(() => Object.values(i.value)), s = m(() => Object.keys(i.value)), u = (v) => !!i.value[v], a = (v) => {
+    const _ = e(v);
     return u(_);
-  }, c = (h) => {
-    const _ = i[h];
+  }, c = (v) => {
+    const _ = i.value[v];
     return _ ? t(_) : null;
-  }, l = (h, _) => {
-    if (h == null)
+  }, l = (v, _) => {
+    if (v == null)
       throw new Error("item has no id");
-    return W(i, h, r(_)), c(h);
-  }, d = (h) => {
-    const _ = e(h);
-    return l(_, h);
-  }, g = (h) => {
-    const _ = e(h), y = c(_);
-    return y ? n(y, h) : l(_, h), c(_);
-  }, f = (h) => {
-    const _ = e(h);
+    return W(i.value, v, r(_)), c(v);
+  }, d = (v) => {
+    const _ = e(v);
+    return l(_, v);
+  }, S = (v) => {
+    const _ = e(v), y = c(_);
+    return y ? n(y, v) : l(_, v), c(_);
+  }, f = (v) => {
+    const _ = e(v);
     return c(_);
-  }, S = (h) => {
-    const _ = u(h);
-    return _ && G(i, h), _;
+  }, I = (v) => {
+    const _ = u(v);
+    return _ && G(i.value, v), _;
   };
   return { byId: i, list: o, ids: s, getId: e, clear: () => {
-    Object.keys(i).forEach((h) => {
-      G(i, h);
+    Object.keys(i.value).forEach((v) => {
+      G(i.value, v);
     });
-  }, has: a, hasItem: u, get: f, getItem: c, set: d, setItem: l, remove: (h) => {
-    const _ = e(h);
-    return S(_);
-  }, removeItem: S, getKeys: () => s.value, merge: g };
+  }, has: a, hasItem: u, get: f, getItem: c, set: d, setItem: l, remove: (v) => {
+    const _ = e(v);
+    return I(_);
+  }, removeItem: I, getKeys: () => s.value, merge: S };
 }
-function ri(e) {
+function ni(e) {
   const { getId: t, itemStorage: r, onRead: n, beforeWrite: i } = e, o = Ve({
     getId: t,
     onRead: n,
@@ -1691,11 +1692,11 @@ function ri(e) {
   }
   return { tempStorage: o, moveTempToItems: s };
 }
-function ni(e) {
-  const { itemStorage: t, tempStorage: r, onRead: n, beforeWrite: i } = e, o = (f, S = {}, { isClone: v }) => te(Object.assign({}, f, S, { __isClone: v })), s = e.makeCopy || o, u = Ve({
+function ii(e) {
+  const { itemStorage: t, tempStorage: r, onRead: n, beforeWrite: i } = e, o = (f, I = {}, { isClone: h }) => te(Object.assign({}, f, I, { __isClone: h })), s = e.makeCopy || o, u = Ve({
     getId: (f) => {
-      const S = t.getId(f);
-      return S ?? r.getId(f);
+      const I = t.getId(f);
+      return I ?? r.getId(f);
     },
     onRead: n,
     beforeWrite: i
@@ -1703,28 +1704,28 @@ function ni(e) {
   function a(f) {
     return f.__isClone || (t.has(f) ? t.merge(f) : r.has(f) && r.merge(f)), t.get(f) || r.get(f) || (t.getId(f) != null ? t.merge(f) : r.getId(f) != null && r.merge(f)), t.get(f) || r.get(f);
   }
-  function c(f, S = {}, v = {}) {
+  function c(f, I = {}, h = {}) {
     const $ = u.get(f);
-    return a(f), $ && v.useExisting ? $ : d(f, S);
+    return a(f), $ && h.useExisting ? $ : d(f, I);
   }
-  function l(f, S = {}) {
-    const v = t.getId(f), $ = s(f, S, { isClone: !1 });
-    return v ? (t.merge($), t.get($)) : (r.merge($), r.get($));
+  function l(f, I = {}) {
+    const h = t.getId(f), $ = s(f, I, { isClone: !1 });
+    return h ? (t.merge($), t.get($)) : (r.merge($), r.get($));
   }
-  function d(f, S = {}) {
-    const v = a(f);
+  function d(f, I = {}) {
+    const h = a(f);
     if (u.get(f)) {
-      const O = s(v, S, { isClone: !0 });
-      Object.keys(v).forEach((h) => {
-        v[h] == null && G(O, h);
+      const O = s(h, I, { isClone: !0 });
+      Object.keys(h).forEach((v) => {
+        h[v] == null && G(O, v);
       }), u.merge(O);
     } else {
-      const O = s(f, S, { isClone: !0 });
+      const O = s(f, I, { isClone: !0 });
       u.set(O);
     }
     return u.get(f);
   }
-  function g(f) {
+  function S(f) {
     return Object.defineProperty(f, "__isClone", {
       writable: !1,
       enumerable: !1,
@@ -1736,32 +1737,32 @@ function ni(e) {
     clone: c,
     commit: l,
     reset: d,
-    markAsClone: g
+    markAsClone: S
   };
 }
-function Ct(e) {
-  const { getIdField: t, setupInstance: r } = e, n = (f, S = {}, { isClone: v }) => {
+function Tt(e) {
+  const { getIdField: t, setupInstance: r } = e, n = (f, I = {}, { isClone: h }) => {
     const $ = te(f);
-    return Object.assign($, S), Object.defineProperty($, "__isTemp", {
+    return Object.assign($, I), Object.defineProperty($, "__isTemp", {
       configurable: !0,
       enumerable: !1,
       get() {
         return this[this.__idField] == null;
       }
     }), de($, {
-      __isClone: v,
+      __isClone: h,
       __tempId: f.__tempId
     });
   }, i = Ve({
     getId: t,
     beforeWrite: r,
     onRead: r
-  }), { tempStorage: o, moveTempToItems: s } = ri({
+  }), { tempStorage: o, moveTempToItems: s } = ni({
     getId: (f) => f.__tempId,
     itemStorage: i,
     beforeWrite: r,
     onRead: r
-  }), { cloneStorage: u, clone: a, commit: c, reset: l, markAsClone: d } = ni({
+  }), { cloneStorage: u, clone: a, commit: c, reset: l, markAsClone: d } = ii({
     itemStorage: i,
     tempStorage: o,
     makeCopy: n,
@@ -1776,21 +1777,21 @@ function Ct(e) {
     commit: c,
     reset: l,
     addItemToStorage: (f) => {
-      const S = t(f);
-      return f = r(f), f.__isClone ? u.merge(f) : S != null && f.__tempId != null ? s(f) : S != null ? i.merge(f) : o && f.__tempId != null ? o == null ? void 0 : o.merge(f) : i.merge(f);
+      const I = t(f);
+      return f = r(f), f.__isClone ? u.merge(f) : I != null && f.__tempId != null ? s(f) : I != null ? i.merge(f) : o && f.__tempId != null ? o == null ? void 0 : o.merge(f) : i.merge(f);
     }
   };
 }
-function ii() {
+function si() {
   return {
     skipGetIfExists: !1
   };
 }
-function Yi(e) {
-  const t = Object.assign({}, ii(), e), { idField: r, customSiftOperators: n } = t, { itemStorage: i, tempStorage: o, cloneStorage: s, clone: u, commit: a, reset: c, addItemToStorage: l } = Ct({
+function Xi(e) {
+  const t = Object.assign({}, si(), e), { idField: r, customSiftOperators: n } = t, { itemStorage: i, tempStorage: o, cloneStorage: s, clone: u, commit: a, reset: c, addItemToStorage: l } = Tt({
     getIdField: (p) => p[r],
-    setupInstance: h
-  }), { findInStore: d, findOneInStore: g, countInStore: f, getFromStore: S, createInStore: v, patchInStore: $, removeFromStore: O } = Ft({
+    setupInstance: v
+  }), { findInStore: d, findOneInStore: S, countInStore: f, getFromStore: I, createInStore: h, patchInStore: $, removeFromStore: O } = Ct({
     idField: r,
     itemStorage: i,
     tempStorage: o,
@@ -1798,20 +1799,20 @@ function Yi(e) {
     addItemToStorage: l,
     customSiftOperators: n
   });
-  function h(p) {
-    const b = bt(p, {
+  function v(p) {
+    const g = wt(p, {
       idField: r,
       clonesById: s.byId,
       clone: u,
       commit: a,
       reset: c,
-      createInStore: v,
+      createInStore: h,
       removeFromStore: O
     });
     if (p.__isSetup)
-      return b;
+      return g;
     {
-      const w = t.setupInstance ? t.setupInstance(b) : b;
+      const w = t.setupInstance ? t.setupInstance(g) : g;
       return Object.defineProperty(w, "__isSetup", { value: !0 }), w;
     }
   }
@@ -1820,7 +1821,7 @@ function Yi(e) {
     i.clear(), o.clear(), s.clear();
   }
   return {
-    new: h,
+    new: v,
     idField: r,
     isSsr: _,
     // items
@@ -1840,35 +1841,35 @@ function Yi(e) {
     reset: c,
     // local queries
     findInStore: d,
-    findOneInStore: g,
+    findOneInStore: S,
     countInStore: f,
-    createInStore: v,
-    getFromStore: S,
+    createInStore: h,
+    getFromStore: I,
     patchInStore: $,
     removeFromStore: O,
     clearAll: y
   };
 }
-var Tt = {}, H = {};
+var Lt = {}, H = {};
 Object.defineProperty(H, "__esModule", { value: !0 });
 H.createDebug = H.setDebug = H.noopDebug = void 0;
 const fe = {};
-function Lt() {
+function Bt() {
   return function() {
   };
 }
-H.noopDebug = Lt;
-let Bt = Lt;
-function si(e) {
-  Bt = e, Object.keys(fe).forEach((t) => {
+H.noopDebug = Bt;
+let Mt = Bt;
+function oi(e) {
+  Mt = e, Object.keys(fe).forEach((t) => {
     fe[t] = e(t);
   });
 }
-H.setDebug = si;
-function oi(e) {
-  return fe[e] || (fe[e] = Bt(e)), (...t) => fe[e](...t);
+H.setDebug = oi;
+function ui(e) {
+  return fe[e] || (fe[e] = Mt(e)), (...t) => fe[e](...t);
 }
-H.createDebug = oi;
+H.createDebug = ui;
 (function(e) {
   var t = ye && ye.__createBinding || (Object.create ? function(s, u, a, c) {
     c === void 0 && (c = a);
@@ -1939,8 +1940,8 @@ H.createDebug = oi;
     return typeof Symbol < "u" ? Symbol.for(s) : s;
   }
   e.createSymbol = o, r(H, e);
-})(Tt);
-function ui(e) {
+})(Lt);
+function ai(e) {
   const { idField: t, isSsr: r } = e, n = e.defaultLimit || 10, i = j({});
   function o() {
     const { defaultLimit: c, defaultSkip: l } = i.value;
@@ -1950,46 +1951,46 @@ function ui(e) {
     qid: c,
     response: l,
     query: d = {},
-    preserveSsr: g = !1
+    preserveSsr: S = !1
   }) {
     var N, F;
-    const { data: f, total: S } = l, v = f.map((M) => ge(M, t)), $ = (/* @__PURE__ */ new Date()).getTime(), { queryId: O, queryParams: h, pageId: _, pageParams: y } = a({ qid: c, query: d });
+    const { data: f, total: I } = l, h = f.map((M) => ge(M, t)), $ = (/* @__PURE__ */ new Date()).getTime(), { queryId: O, queryParams: v, pageId: _, pageParams: y } = a({ qid: c, query: d });
     i.value[c] || W(i.value, c, {}), !z(d, "$limit") && z(l, "limit") && W(i.value, "defaultLimit", l.limit), !z(d, "$skip") && z(l, "skip") && W(i.value, "defaultSkip", l.skip);
-    const I = {
+    const b = {
       query: d,
       queryId: O,
-      queryParams: h,
+      queryParams: v,
       pageId: _,
       pageParams: y,
       queriedAt: $,
-      total: S
-    }, p = (F = (N = i.value[c]) == null ? void 0 : N[O]) == null ? void 0 : F[_], b = i.value[c] || {};
-    Object.assign(b, { mostRecent: I }), W(b, O, b[O] || {});
+      total: I
+    }, p = (F = (N = i.value[c]) == null ? void 0 : N[O]) == null ? void 0 : F[_], g = i.value[c] || {};
+    Object.assign(g, { mostRecent: b }), W(g, O, g[O] || {});
     const w = {
-      total: S,
-      queryParams: h
+      total: I,
+      queryParams: v
     };
-    W(b, O, Object.assign({}, b[O], w));
-    const P = g ? p == null ? void 0 : p.ssr : r.value, E = {
-      [_]: { pageParams: y, ids: v, queriedAt: $, ssr: !!P }
+    W(g, O, Object.assign({}, g[O], w));
+    const P = S ? p == null ? void 0 : p.ssr : r.value, E = {
+      [_]: { pageParams: y, ids: h, queriedAt: $, ssr: !!P }
     };
-    Object.assign(b[O], E);
-    const q = Object.assign({}, i.value[c], b);
+    Object.assign(g[O], E);
+    const q = Object.assign({}, i.value[c], g);
     W(i.value, c, q);
   }
   function u(c) {
-    var v, $;
-    const l = a(c), { qid: d, queryId: g, pageId: f } = l, S = ($ = (v = i.value[d]) == null ? void 0 : v[g]) == null ? void 0 : $[f];
-    S.ssr = !1;
+    var h, $;
+    const l = a(c), { qid: d, queryId: S, pageId: f } = l, I = ($ = (h = i.value[d]) == null ? void 0 : h[S]) == null ? void 0 : $[f];
+    I.ssr = !1;
   }
   function a(c) {
-    const l = Q(c), { query: d = {} } = l, g = l.qid || "default", f = (d == null ? void 0 : d.$limit) || n, S = (d == null ? void 0 : d.$skip) || 0, v = f !== void 0 ? { $limit: f, $skip: S } : void 0, $ = v ? Se(v) : void 0, O = Tt._.omit(d, "$limit", "$skip"), h = Se(O);
+    const l = Q(c), { query: d = {} } = l, S = l.qid || "default", f = (d == null ? void 0 : d.$limit) || n, I = (d == null ? void 0 : d.$skip) || 0, h = f !== void 0 ? { $limit: f, $skip: I } : void 0, $ = h ? Se(h) : void 0, O = Lt._.omit(d, "$limit", "$skip"), v = Se(O);
     return {
-      qid: g,
+      qid: S,
       query: d,
-      queryId: h,
+      queryId: v,
       queryParams: O,
-      pageParams: v,
+      pageParams: h,
       pageId: $,
       isExpired: !1
     };
@@ -2002,7 +2003,7 @@ function ui(e) {
     clearPagination: o
   };
 }
-function ot() {
+function ut() {
   return {
     find: 0,
     count: 0,
@@ -2013,24 +2014,24 @@ function ot() {
     remove: 0
   };
 }
-function ai() {
-  const e = j(ot()), t = j({}), r = j({}), n = j({}), i = j({}), o = m(() => e.value.find > 0), s = m(() => e.value.count > 0), u = m(() => e.value.get > 0), a = m(() => e.value.create > 0 || Object.keys(t.value).length > 0), c = m(() => e.value.update > 0 || Object.keys(r.value).length > 0), l = m(() => e.value.patch > 0 || Object.keys(n.value).length > 0), d = m(() => e.value.remove > 0 || Object.keys(i.value).length > 0);
-  function g($, O) {
+function ci() {
+  const e = j(ut()), t = j({}), r = j({}), n = j({}), i = j({}), o = m(() => e.value.find > 0), s = m(() => e.value.count > 0), u = m(() => e.value.get > 0), a = m(() => e.value.create > 0 || Object.keys(t.value).length > 0), c = m(() => e.value.update > 0 || Object.keys(r.value).length > 0), l = m(() => e.value.patch > 0 || Object.keys(n.value).length > 0), d = m(() => e.value.remove > 0 || Object.keys(i.value).length > 0);
+  function S($, O) {
     O ? e.value[$]++ : e.value[$]--;
   }
-  function f($, O, h) {
+  function f($, O, v) {
     if ($ == null)
       return;
     let _;
-    O === "create" ? _ = t.value : O === "update" ? _ = r.value : O === "patch" ? _ = n.value : O === "remove" && (_ = i.value), h ? W(_, $, !0) : G(_, $);
+    O === "create" ? _ = t.value : O === "update" ? _ = r.value : O === "patch" ? _ = n.value : O === "remove" && (_ = i.value), v ? W(_, $, !0) : G(_, $);
   }
-  function S(...$) {
+  function I(...$) {
     $.forEach((O) => {
       O != null && (G(t.value, O), G(r.value, O), G(n.value, O), G(i.value, O));
     });
   }
-  function v() {
-    e.value = ot(), t.value = {}, r.value = {}, n.value = {}, i.value = {};
+  function h() {
+    e.value = ut(), t.value = {}, r.value = {}, n.value = {}, i.value = {};
   }
   return {
     isPending: e,
@@ -2045,21 +2046,21 @@ function ai() {
     isUpdatePending: c,
     isPatchPending: l,
     isRemovePending: d,
-    setPending: g,
+    setPending: S,
     setPendingById: f,
-    unsetPendingById: S,
-    clearAllPending: v
+    unsetPendingById: I,
+    clearAllPending: h
   };
 }
-function ci() {
-  const e = ee({
+function li() {
+  const e = ie({
     created: {},
     patched: {},
     updated: {},
     removed: {}
   });
   function t(n, i) {
-    const { items: o } = Z(n);
+    const { items: o } = ee(n);
     o.forEach((s) => {
       e[i][s] ? r(n, i) : (W(e[i], s, !0), setTimeout(() => {
         r(n, i);
@@ -2067,15 +2068,15 @@ function ci() {
     });
   }
   function r(n, i) {
-    const { items: o } = Z(n);
+    const { items: o } = ee(n);
     o.forEach((s) => {
       G(e[i], s);
     });
   }
   return { eventLocks: e, toggleEventLock: t, clearEventLock: r };
 }
-function li() {
-  const e = Xt({});
+function fi() {
+  const e = Zt({});
   function t(o) {
     return e[o];
   }
@@ -2092,51 +2093,51 @@ function li() {
   }
   return { resultsByQid: e, getQid: t, setQid: r, clearQid: n, clearAllQids: i };
 }
-function fi() {
+function di() {
   return {
     skipGetIfExists: !1
   };
 }
-function di(e) {
-  const t = Object.assign({}, fi(), e), { idField: r, servicePath: n, whitelist: i, paramsForServer: o, defaultLimit: s, customSiftOperators: u } = t, { itemStorage: a, tempStorage: c, cloneStorage: l, clone: d, commit: g, reset: f, addItemToStorage: S } = Ct({
-    getIdField: (R) => R[r],
+function pi(e) {
+  const t = Object.assign({}, di(), e), { idField: r, servicePath: n, whitelist: i, paramsForServer: o, defaultLimit: s, customSiftOperators: u } = t, { itemStorage: a, tempStorage: c, cloneStorage: l, clone: d, commit: S, reset: f, addItemToStorage: I } = Tt({
+    getIdField: (D) => D[r],
     setupInstance: p
-  }), { findInStore: v, findOneInStore: $, countInStore: O, getFromStore: h, createInStore: _, patchInStore: y, removeFromStore: I } = Ft({
+  }), { findInStore: h, findOneInStore: $, countInStore: O, getFromStore: v, createInStore: _, patchInStore: y, removeFromStore: b } = Ct({
     idField: r,
     itemStorage: a,
     tempStorage: c,
     cloneStorage: l,
-    addItemToStorage: S,
+    addItemToStorage: I,
     whitelist: i,
     paramsForServer: o,
     customSiftOperators: u
   });
-  function p(R) {
-    const X = bt(R, {
+  function p(D) {
+    const X = wt(D, {
       idField: r,
       clonesById: l.byId,
       clone: d,
-      commit: g,
+      commit: S,
       reset: f,
       createInStore: _,
-      removeFromStore: I
+      removeFromStore: b
     });
-    if (R.__isSetup)
+    if (D.__isSetup)
       return X;
     {
       const he = t.setupInstance ? t.setupInstance(X) : X;
       return Object.defineProperty(he, "__isSetup", { value: !0 }), he;
     }
   }
-  const b = ai(), w = m(() => !!C(t.ssr)), { pagination: P, clearPagination: E, updatePaginationForQuery: q, getQueryInfo: N, unflagSsr: F } = ui({
+  const g = ci(), w = m(() => !!C(t.ssr)), { pagination: P, clearPagination: E, updatePaginationForQuery: q, getQueryInfo: N, unflagSsr: F } = ai({
     idField: r,
     isSsr: w,
     defaultLimit: s
-  }), { resultsByQid: M, getQid: A, setQid: L, clearQid: J, clearAllQids: Y } = li();
+  }), { resultsByQid: M, getQid: A, setQid: L, clearQid: J, clearAllQids: Y } = fi();
   function pe() {
-    a.clear(), c.clear(), l.clear(), E(), b.clearAllPending(), Y();
+    a.clear(), c.clear(), l.clear(), E(), g.clearAllPending(), Y();
   }
-  const $e = ci();
+  const $e = li();
   return {
     new: p,
     idField: r,
@@ -2156,16 +2157,16 @@ function di(e) {
     clones: l.list,
     cloneIds: l.ids,
     clone: d,
-    commit: g,
+    commit: S,
     reset: f,
     // local queries
-    findInStore: v,
+    findInStore: h,
     findOneInStore: $,
     countInStore: O,
     createInStore: _,
-    getFromStore: h,
+    getFromStore: v,
     patchInStore: y,
-    removeFromStore: I,
+    removeFromStore: b,
     clearAll: pe,
     // ssr qid cache
     resultsByQid: M,
@@ -2181,24 +2182,24 @@ function di(e) {
     updatePaginationForQuery: q,
     unflagSsr: F,
     getQueryInfo: N,
-    ...b,
+    ...g,
     ...$e
   };
 }
 const V = {};
-function pi(e) {
+function hi(e) {
   return `is${e.slice(0, 1).toUpperCase()}${e.slice(1, e.length - 1)}Pending`;
 }
-function hi(e) {
+function vi(e) {
   return {
     promise: null,
     isResolved: !1,
-    getter: pi(e)
+    getter: hi(e)
   };
 }
-function Xi(e, t) {
-  return V[t] = V[t] || hi(t), (!V[t].promise || V[t].isResolved) && (V[t].promise = new Promise((r) => {
-    const n = Oe(
+function Zi(e, t) {
+  return V[t] = V[t] || vi(t), (!V[t].promise || V[t].isResolved) && (V[t].promise = new Promise((r) => {
+    const n = Ie(
       () => e[V[t].getter],
       async (i) => {
         i || setTimeout(() => {
@@ -2209,8 +2210,8 @@ function Xi(e, t) {
     );
   })), V[t].promise;
 }
-var vi = yi;
-function yi(e, t, r, n) {
+var yi = mi;
+function mi(e, t, r, n) {
   var i, o, s;
   return function() {
     if (s = this, o = Array.prototype.slice.call(arguments), i && (r || n))
@@ -2226,8 +2227,8 @@ function yi(e, t, r, n) {
     }
   };
 }
-const Me = /* @__PURE__ */ Ie(vi);
-function mi(e) {
+const Me = /* @__PURE__ */ Oe(yi);
+function gi(e) {
   if (!e.service || e.handleEvents === !1)
     return;
   const t = e.service, r = j({}), n = j({}), i = Me(
@@ -2261,28 +2262,28 @@ function mi(e) {
     const d = (f = e.handleEvents) == null ? void 0 : f[c];
     if (d === !1)
       return;
-    const g = ge(l, t.store.idField);
-    if (c !== "created" && t.store.eventLocks[c][g]) {
-      t.store.toggleEventLock(g, c);
+    const S = ge(l, t.store.idField);
+    if (c !== "created" && t.store.eventLocks[c][S]) {
+      t.store.toggleEventLock(S, c);
       return;
     }
     d && !d(l, { service: t }) || (e.debounceEventsTime ? c === "removed" ? u(l) : o(l) : c === "removed" ? t.store.removeFromStore(l) : t.store.createInStore(l));
   }
   t.on("created", (c) => {
-    const l = ie(t, c);
+    const l = ne(t, c);
     a("created", l);
   }), t.on("updated", (c) => {
-    const l = ie(t, c);
+    const l = ne(t, c);
     a("updated", l);
   }), t.on("patched", (c) => {
-    const l = ie(t, c);
+    const l = ne(t, c);
     a("patched", l);
   }), t.on("removed", (c) => {
-    const l = ie(t, c);
+    const l = ne(t, c);
     a("removed", l);
   });
 }
-function gi() {
+function Si() {
   return async (e, t) => {
     if (e.params.value && (e.params = Q(e.params)), e.params.query && (e.params.query = Q(e.params.query)), e.method === "find") {
       const r = e.params.query || {};
@@ -2291,7 +2292,7 @@ function gi() {
     t && await t();
   };
 }
-function Si() {
+function Ii() {
   return async (e, t) => {
     var i, o, s;
     const r = e.service.store;
@@ -2324,14 +2325,14 @@ function Oi() {
     o && r && !i.isSsr && i.toggleEventLock(r, u), await t(), o && r && !i.isSsr && i.clearEventLock(r, u);
   };
 }
-function Ii() {
+function bi() {
   return async (e, t) => {
     const { method: r, params: n } = e, i = e.service.store;
     if (r === "patch" && n.data && (e.data = n.data), t && await t(), !e.params.skipStore) {
       if (r === "remove")
         i.removeFromStore(e.result);
       else if (r === "create") {
-        const o = Dr(e.data, e.result);
+        const o = Rr(e.data, e.result);
         e.result = i.createInStore(o);
       } else
         r === "find" && Array.isArray(e.result.data) ? e.result.data = i.createInStore(e.result.data) : e.result = i.createInStore(e.result);
@@ -2342,13 +2343,13 @@ function Ii() {
     }
   };
 }
-function bi() {
+function wi() {
   return async (e, t) => {
     var r;
     t && await t(), e.service.new && (Array.isArray((r = e.result) == null ? void 0 : r.data) ? e.result.data = e.result.data.map((n) => e.service.new(n)) : Array.isArray(e.result) ? e.result = e.result.map((n) => e.service.new(n)) : e.result = e.service.new(e.result));
   };
 }
-function wi() {
+function _i() {
   return async (e, t) => {
     const r = e.service.store;
     if (e.method === "find") {
@@ -2364,7 +2365,7 @@ function wi() {
     t && await t();
   };
 }
-function _i() {
+function $i() {
   return async (e, t) => {
     if (e.method === "find") {
       const { params: r } = e, { query: n = {} } = r;
@@ -2373,7 +2374,7 @@ function _i() {
     t && await t();
   };
 }
-function $i() {
+function Pi() {
   return async (e, t) => {
     const { params: r, id: n } = e, i = e.service.store;
     if (e.method === "get" && n != null) {
@@ -2385,17 +2386,17 @@ function $i() {
     await t();
   };
 }
-function Pi() {
+function ji() {
   return async (e, t) => {
     const { method: r, data: n, params: i, id: o } = e, s = e.service.store;
     let u, a;
     const c = r === "patch" && !i.data && (n.__isClone || i.diff);
     if (c) {
       a = n;
-      const l = s.getFromStore(o).value, d = gt(l, a, i.diff);
+      const l = s.getFromStore(o).value, d = St(l, a, i.diff);
       if (u = te(l), i.eager !== !1 && n.commit(d), i.with) {
-        const g = Fe(a, i.with);
-        typeof i.with != "string" && !Array.isArray(i.with) && Object.assign(g, i.with), Object.assign(d, g);
+        const S = Fe(a, i.with);
+        typeof i.with != "string" && !Array.isArray(i.with) && Object.assign(S, i.with), Object.assign(d, S);
       }
       e.data = d, Object.keys(e.data).length === 0 && (e.result = a);
     } else
@@ -2407,7 +2408,7 @@ function Pi() {
     }
   };
 }
-function ji() {
+function ki() {
   return async (e, t) => {
     const { params: r } = e, n = e.service.store;
     if (r.qid) {
@@ -2420,25 +2421,25 @@ function ji() {
     await t(), r.qid && n.isSsr && n.setQid(r.qid, e.result);
   };
 }
-function ki() {
+function Ei() {
   return [
-    gi(),
     Si(),
-    Oi(),
     Ii(),
+    Oi(),
     bi(),
     wi(),
     _i(),
     $i(),
     Pi(),
-    ji()
+    ji(),
+    ki()
   ];
 }
-function Ei(e, t) {
+function Ai(e, t) {
   if (e.__isServiceInstance)
     return e;
   const { service: r, store: n } = t, i = (o, s) => Object.assign(o, s);
-  return mt(e, {
+  return gt(e, {
     isPending() {
       return this.isCreatePending || this.isPatchPending || this.isRemovePending;
     },
@@ -2465,7 +2466,7 @@ function Ei(e, t) {
     patch(o) {
       const s = this[n.idField];
       if (s === void 0)
-        throw new nr("the item has no id");
+        throw new ir("the item has no id");
       return r.patch(s, this, o).then((u) => i(this, u));
     },
     remove(o) {
@@ -2478,7 +2479,7 @@ function Ei(e, t) {
     }
   }), e;
 }
-function Ai(e, t) {
+function qi(e, t) {
   const r = {};
   Object.keys(t).forEach((n) => {
     const i = e[n], o = t[n], s = this.service(o);
@@ -2488,57 +2489,57 @@ function Ai(e, t) {
     }
   }), de(e, r);
 }
-function qi(e, t, r) {
+function Fi(e, t, r) {
   const n = JSON.stringify(t);
   r.setItem(e, n);
 }
-function Fi(e, t) {
+function Ci(e, t) {
   const r = t.getItem(e.$id);
   if (r) {
     const n = JSON.parse(r) || {};
     Object.assign(e, n);
   }
 }
-function Ci(e, t, r = window.localStorage) {
-  Fi(e, r);
-  const n = Me(qi, 500), i = m(() => se.pick(e, ...t));
-  Oe(i, (o) => n(e.$id, o, r), { deep: !0 });
+function Ti(e, t, r = window.localStorage) {
+  Ci(e, r);
+  const n = Me(Fi, 500), i = m(() => se.pick(e, ...t));
+  Ie(i, (o) => n(e.$id, o, r), { deep: !0 });
 }
-function Ti(e = window.localStorage) {
+function Li(e = window.localStorage) {
   const t = "service:";
   for (let r = 0; r < e.length; r++) {
     const n = e.key(r);
     n != null && n.startsWith(t) && e.removeItem(n);
   }
 }
-function Zi(e, t) {
-  const r = Kt();
+function es(e, t) {
+  const r = zt();
   r.defaultService = function(i) {
-    var I;
-    const o = ((I = t.services) == null ? void 0 : I[i]) || {}, s = o.idField || t.idField, u = o.defaultLimit || t.defaultLimit || 10, a = (o.whitelist || []).concat(t.whitelist || []), c = (o.paramsForServer || []).concat(t.paramsForServer || []), l = o.handleEvents || t.handleEvents, d = o.debounceEventsTime != null ? o.debounceEventsTime : t.debounceEventsTime, g = o.debounceEventsGuarantee != null ? o.debounceEventsGuarantee : t.debounceEventsGuarantee, f = Object.assign(
+    var b;
+    const o = ((b = t.services) == null ? void 0 : b[i]) || {}, s = o.idField || t.idField, u = o.defaultLimit || t.defaultLimit || 10, a = (o.whitelist || []).concat(t.whitelist || []), c = (o.paramsForServer || []).concat(t.paramsForServer || []), l = o.handleEvents || t.handleEvents, d = o.debounceEventsTime != null ? o.debounceEventsTime : t.debounceEventsTime, S = o.debounceEventsGuarantee != null ? o.debounceEventsGuarantee : t.debounceEventsGuarantee, f = Object.assign(
       {},
       o.customSiftOperators || {},
       t.customSiftOperators || {}
     );
-    function S(p) {
-      const b = Object.assign(p, t.customizeStore ? t.customizeStore(p) : p);
+    function I(p) {
+      const g = Object.assign(p, t.customizeStore ? t.customizeStore(p) : p);
       return Object.assign(
-        b,
-        o.customizeStore ? o.customizeStore(b) : b
+        g,
+        o.customizeStore ? o.customizeStore(g) : g
       );
     }
-    function v(p) {
-      const b = o.instanceServicePath || i, w = r.service(b), P = Ei(p, {
+    function h(p) {
+      const g = o.instanceServicePath || i, w = r.service(g), P = Ai(p, {
         service: w,
         // eslint-disable-next-line @typescript-eslint/no-use-before-define
-        store: h
-      }), E = { app: r, service: w, servicePath: b }, q = t.setupInstance ? t.setupInstance(P, E) : P;
+        store: v
+      }), E = { app: r, service: w, servicePath: g }, q = t.setupInstance ? t.setupInstance(P, E) : P;
       return o.setupInstance ? o.setupInstance(q, E) : q;
     }
     const $ = o.storeName || `service:${i}`, O = t.pinia._s.get($);
-    let h;
-    if (O ? h = O : h = zt($, () => {
-      const b = di({
+    let v;
+    if (O ? v = O : v = Ht($, () => {
+      const g = pi({
         idField: s,
         servicePath: i,
         defaultLimit: u,
@@ -2546,27 +2547,27 @@ function Zi(e, t) {
         paramsForServer: c,
         customSiftOperators: f,
         ssr: t.ssr,
-        setupInstance: v
-      }), w = S(b);
-      return { ...b, ...w };
+        setupInstance: h
+      }), w = I(g);
+      return { ...g, ...w };
     })(t.pinia), !t.ssr && t.storage) {
-      const p = ["itemsById", "pagination"], b = t.syncWithStorage === !0 ? p : Array.isArray(t.syncWithStorage) ? t.syncWithStorage : [], w = o.syncWithStorage === !0 ? p : Array.isArray(o.syncWithStorage) ? o.syncWithStorage : [], P = [.../* @__PURE__ */ new Set([...b, ...w])];
-      P.length > 0 && Ci(h, P, t.storage);
+      const p = ["itemsById", "pagination"], g = t.syncWithStorage === !0 ? p : Array.isArray(t.syncWithStorage) ? t.syncWithStorage : [], w = o.syncWithStorage === !0 ? p : Array.isArray(o.syncWithStorage) ? o.syncWithStorage : [], P = [.../* @__PURE__ */ new Set([...g, ...w])];
+      P.length > 0 && Ti(v, P, t.storage);
     }
-    const _ = e.service(i), y = new sn(_, { store: h, servicePath: i });
-    return mi({
+    const _ = e.service(i), y = new on(_, { store: v, servicePath: i });
+    return gi({
       service: y,
       debounceEventsTime: d,
-      debounceEventsGuarantee: g,
+      debounceEventsGuarantee: S,
       handleEvents: l
     }), y;
   };
   const n = (i) => {
     i.hooks({
-      around: ki()
+      around: Ei()
     });
   };
-  return r.mixins.push(n), mt(r, {
+  return r.mixins.push(n), gt(r, {
     authentication() {
       return e.authentication;
     },
@@ -2581,20 +2582,20 @@ function Zi(e, t) {
     },
     clearStorage() {
       if (!t.ssr && t.storage)
-        return Ti(t.storage);
+        return Li(t.storage);
     }
   }), Object.assign(r, {
     // TODO: remove in v5
-    storeAssociated: Ai,
+    storeAssociated: qi,
     pushToStore(i, o) {
       const s = r.service(o);
-      return Ur(i, s);
+      return Vr(i, s);
     },
     defineVirtualProperty: Ot,
-    defineVirtualProperties: Vr
+    defineVirtualProperties: xr
   }), r;
 }
-class es extends ir {
+class ts extends sr {
   async request(t, r) {
     const n = Object.assign({}, t, r.connection);
     n.headers = Object.assign({ Accept: "application/json" }, this.options.headers, n.headers), t.body && (n.body = t.body);
@@ -2606,7 +2607,7 @@ class es extends ir {
     }
   }
 }
-const ts = {
+const rs = {
   "feathers-pinia": [
     "useServiceInstance",
     "useInstanceDefaults",
@@ -2622,13 +2623,13 @@ const ts = {
 class le extends Error {
 }
 le.prototype.name = "InvalidTokenError";
-function Li(e) {
+function Bi(e) {
   return decodeURIComponent(atob(e).replace(/(.)/g, (t, r) => {
     let n = r.charCodeAt(0).toString(16).toUpperCase();
     return n.length < 2 && (n = "0" + n), "%" + n;
   }));
 }
-function Bi(e) {
+function Mi(e) {
   let t = e.replace(/-/g, "+").replace(/_/g, "/");
   switch (t.length % 4) {
     case 0:
@@ -2643,12 +2644,12 @@ function Bi(e) {
       throw new Error("base64 string is not of the correct length");
   }
   try {
-    return Li(t);
+    return Bi(t);
   } catch {
     return atob(t);
   }
 }
-function Mi(e, t) {
+function Ni(e, t) {
   if (typeof e != "string")
     throw new le("Invalid token specified: must be a string");
   t || (t = {});
@@ -2657,7 +2658,7 @@ function Mi(e, t) {
     throw new le(`Invalid token specified: missing part #${r + 1}`);
   let i;
   try {
-    i = Bi(n);
+    i = Mi(n);
   } catch (o) {
     throw new le(`Invalid token specified: invalid base64 for part #${r + 1} (${o.message})`);
   }
@@ -2667,60 +2668,61 @@ function Mi(e, t) {
     throw new le(`Invalid token specified: invalid json for part #${r + 1} (${o.message})`);
   }
 }
-function rs(e) {
+function ns(e) {
   const { api: t, servicePath: r, skipTokenCheck: n } = e, i = r ? t.service(r) : null, o = e.entityKey || "user", s = j(), u = async () => {
   }, a = async (A) => {
     throw A;
-  }, c = e.onSuccess || u, l = e.onError || a, d = e.onInitSuccess || u, g = e.onInitError || u, f = e.onLogoutSuccess || u, S = e.onLogoutError || a, v = j(null), $ = m(() => i && (i == null ? void 0 : i.getFromStore(v)).value || null), O = j(null), h = () => O.value = null, _ = et(), y = m(() => !!_.count.value), I = j(!1), p = (A) => {
+  }, c = e.onSuccess || u, l = e.onError || a, d = e.onInitSuccess || u, S = e.onInitError || u, f = e.onLogoutSuccess || u, I = e.onLogoutError || a, h = j(null), $ = m(() => !i || !h.value ? null : (i == null ? void 0 : i.store.itemsById[h.value]) || null), O = j(null), v = () => O.value = null, _ = tt(), y = m(() => !!_.count.value), b = j(!1), p = (A) => {
     const L = A[o];
     if (i && L) {
       const J = i.store.createInStore(L);
-      v.value = J[i.store.idField] || J.__tempId;
+      h.value = J[i.store.idField] || J.__tempId;
     }
-    return I.value = !0, A;
-  }, b = async (A) => (_.add(), h(), s.value = t.authenticate(A).then(p).then(async (L) => await c(L) || L).catch((L) => (O.value = L, l(L))).finally(() => {
+    return b.value = !0, A;
+  }, g = async (A) => (_.add(), v(), s.value = t.authenticate(A).then(p).then(async (L) => await c(L) || L).catch((L) => (O.value = L, l(L))).finally(() => {
     _.sub();
   }), s.value), w = (A) => {
     try {
-      const L = Mi(A);
+      const L = Ni(A);
       return (/* @__PURE__ */ new Date()).getTime() > L.exp * 1e3;
     } catch {
       return !1;
     }
-  }, P = j(!1), E = async () => (_.add(), s.value = t.reAuthenticate().then(p).then(async (A) => await d(A) || A).catch((A) => (A.value = A, g(A))).finally(() => {
+  }, P = j(!1), E = async () => (_.add(), s.value = t.reAuthenticate().then(p).then(async (A) => await d(A) || A).catch((A) => (A.value = A, S(A))).finally(() => {
     _.sub(), P.value = !0;
-  }), s.value), q = et(), N = m(() => !!q.count.value), F = async () => (q.add(), t.logout().then((A) => (v.value = null, I.value = !1, A)).then(f).catch((A) => (A.value = A, S(A))).finally(() => q.sub())), M = j(null);
+  }), s.value), q = tt(), N = m(() => !!q.count.value), F = async () => (q.add(), t.logout().then((A) => (h.value = null, b.value = !1, A)).then(f).catch((A) => (A.value = A, I(A))).finally(() => q.sub())), M = j(null);
   return {
+    userId: h,
     user: $,
     error: O,
     isPending: y,
     isLogoutPending: N,
     isInitDone: P,
-    isAuthenticated: I,
+    isAuthenticated: b,
     loginRedirect: M,
     getPromise: () => s.value,
     isTokenExpired: w,
-    authenticate: b,
+    authenticate: g,
     reAuthenticate: E,
     logout: F,
-    clearError: h
+    clearError: v
   };
 }
-function ns(e, t) {
-  const r = Zt(null);
-  er(e, async (o) => {
+function is(e, t) {
+  const r = er(null);
+  tr(e, async (o) => {
     var c, l;
     if (!e)
       return;
     const s = t == null ? void 0 : t.idField, u = s ? o == null ? void 0 : o[s] : o == null ? void 0 : o.id, a = s ? (c = r.value) == null ? void 0 : c[s] : (l = r.value) == null ? void 0 : l.id;
-    u !== a && (r.value = Ze(o));
+    u !== a && (r.value = et(o));
   }, { immediate: !0 });
   async function n() {
-    const o = tr(e), s = gt(r.value, o, t == null ? void 0 : t.onlyProps);
+    const o = rr(e), s = St(r.value, o, t == null ? void 0 : t.onlyProps);
     if (Object.keys(s).length)
       try {
         const u = await e.value.save({ data: s });
-        r.value = Ze(u);
+        r.value = et(u);
       } catch (u) {
         throw console.error("could not save", u), u;
       }
@@ -2729,7 +2731,7 @@ function ns(e, t) {
   }
   function i(o) {
     if (r.value) {
-      const s = rr(o) ? o.value : o;
+      const s = nr(o) ? o.value : o;
       Object.assign(s, r.value);
     }
     return o;
@@ -2737,55 +2739,55 @@ function ns(e, t) {
   return { data: e, backup: r, save: n, restore: i };
 }
 export {
-  es as OFetch,
-  sn as PiniaService,
-  Ti as clearStorage,
-  Zi as createPiniaClient,
-  mt as defineGetters,
-  zi as defineSetters,
+  ts as OFetch,
+  on as PiniaService,
+  Li as clearStorage,
+  es as createPiniaClient,
+  gt as defineGetters,
+  Hi as defineSetters,
   de as defineValues,
-  Vr as defineVirtualProperties,
+  xr as defineVirtualProperties,
   Ot as defineVirtualProperty,
-  gt as diff,
+  St as diff,
   Oi as eventLocks,
-  ts as feathersPiniaAutoImport,
-  ki as feathersPiniaHooks,
-  Z as getArray,
+  rs as feathersPiniaAutoImport,
+  Ei as feathersPiniaHooks,
+  ee as getArray,
   Ae as getExtendedQueryInfo,
   ge as getId,
-  ne as getParams,
+  Z as getParams,
   z as hasOwn,
-  Fi as hydrateStore,
-  bi as makeModelInstances,
-  _i as normalizeFind,
+  Ci as hydrateStore,
+  wi as makeModelInstances,
+  $i as normalizeFind,
   Fe as pickDiff,
-  Ur as pushToStore,
-  Dr as restoreTempIds,
-  Si as setPending,
-  $i as skipGetIfExists,
-  Ai as storeAssociated,
-  Ii as syncStore,
-  Ci as syncWithStorage,
+  Vr as pushToStore,
+  Rr as restoreTempIds,
+  Ii as setPending,
+  Pi as skipGetIfExists,
+  qi as storeAssociated,
+  bi as syncStore,
+  Ti as syncWithStorage,
   ce as timeout,
-  Ct as useAllStorageTypes,
-  rs as useAuth,
-  ns as useBackup,
-  Yi as useDataStore,
-  rn as useFind,
-  nn as useGet,
-  Hi as useInstanceDefaults,
-  bt as useModelInstance,
-  Xi as useQueuePromise,
-  ni as useServiceClones,
-  ci as useServiceEventLocks,
-  mi as useServiceEvents,
-  Ei as useServiceInstance,
-  Ft as useServiceLocal,
-  ui as useServicePagination,
-  ai as useServicePending,
+  Tt as useAllStorageTypes,
+  ns as useAuth,
+  is as useBackup,
+  Xi as useDataStore,
+  nn as useFind,
+  sn as useGet,
+  Yi as useInstanceDefaults,
+  wt as useModelInstance,
+  Zi as useQueuePromise,
+  ii as useServiceClones,
+  li as useServiceEventLocks,
+  gi as useServiceEvents,
+  Ai as useServiceInstance,
+  Ct as useServiceLocal,
+  ai as useServicePagination,
+  ci as useServicePending,
   Ve as useServiceStorage,
-  di as useServiceStore,
-  ri as useServiceTemps,
-  qi as writeToStorage
+  pi as useServiceStore,
+  ni as useServiceTemps,
+  Fi as writeToStorage
 };
 //# sourceMappingURL=feathers-pinia.js.map

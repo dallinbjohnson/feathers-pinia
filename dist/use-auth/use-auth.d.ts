@@ -1,4 +1,5 @@
 import type { Ref } from 'vue-demi';
+import type { NullableId } from '@feathersjs/feathers';
 type SuccessHandler = (result: Record<string, any>) => Promise<Record<string, any> | void>;
 type ErrorHandler = (error: Error) => Promise<void>;
 interface UseAuthOptions {
@@ -20,6 +21,7 @@ interface AuthenticateData {
     password?: string;
 }
 export declare function useAuth<d = AuthenticateData>(options: UseAuthOptions): {
+    userId: Ref<NullableId>;
     user: import("vue-demi").ComputedRef<any>;
     error: Ref<{
         name: string;

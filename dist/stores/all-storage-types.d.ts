@@ -5,7 +5,7 @@ interface UseAllStorageOptions {
 }
 export declare function useAllStorageTypes<M extends AnyData>(options: UseAllStorageOptions): {
     itemStorage: {
-        byId: import("../types.js").ById<M>;
+        byId: import("vue").Ref<import("../types.js").ById<M>>;
         list: import("vue").ComputedRef<M[]>;
         ids: import("vue").ComputedRef<string[]>;
         getId: (item: M) => string;
@@ -22,7 +22,7 @@ export declare function useAllStorageTypes<M extends AnyData>(options: UseAllSto
         merge: (item: M) => M;
     };
     tempStorage: {
-        byId: import("../types.js").ById<M>;
+        byId: import("vue").Ref<import("../types.js").ById<M>>;
         list: import("vue").ComputedRef<M[]>;
         ids: import("vue").ComputedRef<string[]>;
         getId: (item: M) => string;
@@ -39,7 +39,7 @@ export declare function useAllStorageTypes<M extends AnyData>(options: UseAllSto
         merge: (item: M) => M;
     };
     cloneStorage: {
-        byId: import("../types.js").ById<M>;
+        byId: import("vue").Ref<import("../types.js").ById<M>>;
         list: import("vue").ComputedRef<M[]>;
         ids: import("vue").ComputedRef<string[]>;
         getId: (item: M) => string;

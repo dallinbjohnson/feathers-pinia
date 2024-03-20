@@ -11,13 +11,13 @@ export declare function useDataStore<M extends AnyData, Q extends Query>(_option
     new: <N extends M>(this: any, data: N) => any;
     idField: string;
     isSsr: import("vue-demi").ComputedRef<boolean>;
-    itemsById: import("../types.js").ById<M>;
+    itemsById: import("vue-demi").Ref<import("../types.js").ById<M>>;
     items: import("vue-demi").ComputedRef<M[]>;
     itemIds: import("vue-demi").ComputedRef<string[]>;
-    tempsById: import("../types.js").ById<M>;
+    tempsById: import("vue-demi").Ref<import("../types.js").ById<M>>;
     temps: import("vue-demi").ComputedRef<M[]>;
     tempIds: import("vue-demi").ComputedRef<string[]>;
-    clonesById: import("../types.js").ById<M>;
+    clonesById: import("vue-demi").Ref<import("../types.js").ById<M>>;
     clones: import("vue-demi").ComputedRef<M[]>;
     cloneIds: import("vue-demi").ComputedRef<string[]>;
     clone: (item: M, data?: {}, options?: import("./types.js").CloneOptions) => M;

@@ -1,9 +1,10 @@
+import type { Ref } from 'vue-demi';
 import type { CloneOptions } from '../stores/index.js';
 import type { AnyData, ById, Params } from '../types.js';
 import type { BaseModelData, ModelInstanceData } from './types.js';
 interface UseModelInstanceOptions<M, Q extends AnyData> {
     idField: string;
-    clonesById: ById<AnyData>;
+    clonesById: Ref<ById<AnyData>>;
     clone: (item: M, data?: Record<string, any>, options?: CloneOptions) => M;
     commit: (item: M, data?: Partial<M>) => M;
     reset: (item: M, data?: Record<string, any>) => M;

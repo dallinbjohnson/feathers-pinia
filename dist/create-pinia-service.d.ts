@@ -61,7 +61,7 @@ export declare class PiniaService<Svc extends FeathersService> {
     /**
      * create a record on the API server.
      */
-    create(data: SvcData<Svc>): Promise<SvcModel<Svc>>;
+    create(data: SvcData<Svc>, params?: MaybeRef<SvcParams<Svc>>): Promise<SvcModel<Svc>>;
     /**
      * patch a record on the API server.
      */
@@ -86,7 +86,7 @@ export declare class PiniaService<Svc extends FeathersService> {
     /**
      * find a single record in the local store by query.
      */
-    findOneInStore(params?: MaybeRef<SvcParams<Svc>>): SvcModel<Svc>;
+    findOneInStore(params?: MaybeRef<SvcParams<Svc>>): ComputedRef<SvcModel<Svc>>;
     /**
      * count records matching a query in the store.
      */

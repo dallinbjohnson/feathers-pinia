@@ -9,7 +9,7 @@ interface UseServiceTempsOptions<M extends AnyData> {
 }
 export declare function useServiceTemps<M extends AnyData>(options: UseServiceTempsOptions<M>): {
     tempStorage: {
-        byId: import("../types.js").ById<M>;
+        byId: import("vue").Ref<import("../types.js").ById<M>>;
         list: import("vue").ComputedRef<M[]>;
         ids: import("vue").ComputedRef<string[]>;
         getId: (item: M) => string;
