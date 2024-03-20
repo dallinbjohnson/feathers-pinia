@@ -105,9 +105,10 @@ export class PiniaService<Svc extends FeathersService> {
   /**
    * create a record on the API server.
    */
-  async create(data: SvcData<Svc>): Promise<SvcModel<Svc>>
-  async create(data: AnyData) {
-    const result = await this.service.create(data)
+  async create(data: SvcData<Svc>, params?: MaybeRef<SvcParams<Svc>>): Promise<SvcModel<Svc>>
+  async create(data: AnyData, _params?: MaybeRef<Params<Query>>) {
+    const params = getParams(_params)
+    const result = await this.service.create(data, params)
     return result
   }
 
@@ -155,7 +156,7 @@ export class PiniaService<Svc extends FeathersService> {
   /**
    * find a single record in the local store by query.
    */
-  findOneInStore(params?: MaybeRef<SvcParams<Svc>>): SvcModel<Svc>
+  findOneInStore(params?: MaybeRef<SvcParams<Svc>>): ComputedRef<SvcModel<Svc>>
   findOneInStore(params?: MaybeRef<Params<Query>>) {
     const result = this.store.findOneInStore(params)
     return result
