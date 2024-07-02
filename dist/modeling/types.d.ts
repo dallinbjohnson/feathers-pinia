@@ -1,5 +1,6 @@
-import type { AnyData, PatchParams } from '../types.js';
-import type { CloneOptions } from '../stores/index.js';
+import { CloneOptions } from '../stores/index.js';
+import { AnyData, PatchParams } from '../types.js';
+
 export interface BaseModelData {
     /**
      * Indicates if this instance is a clone.. It will be

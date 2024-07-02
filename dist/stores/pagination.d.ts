@@ -1,6 +1,7 @@
-import type { ComputedRef, Ref } from 'vue-demi';
-import type { Params, Query, QueryInfo } from '../types.js';
-import type { PaginationState, UpdatePaginationForQueryOptions } from './types.js';
+import { PaginationState, UpdatePaginationForQueryOptions } from './types.js';
+import { Params, Query, QueryInfo } from '../types.js';
+import { ComputedRef, Ref } from 'vue-demi';
+
 export interface UseServicePagination {
     idField: string;
     isSsr: ComputedRef<boolean>;

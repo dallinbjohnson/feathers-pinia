@@ -1,12 +1,15 @@
-import type { FeathersService, Id, Paginated, PaginationOptions } from '@feathersjs/feathers';
-import type { MaybeRef } from '@vueuse/core';
-import type { ComputedRef } from 'vue-demi';
-import type { UseFindOptions, UseFindParams, UseGetParams } from './use-find-get/index.js';
-import type { AnyData, Params, Query } from './types.js';
-import type { ServiceInstance } from './modeling/index.js';
+import { ServiceInstance } from './modeling/index.js';
+import { AnyData, Params, Query } from './types.js';
+import { UseFindOptions, UseFindParams, UseGetParams } from './use-find-get/index.js';
+import { ComputedRef } from 'vue-demi';
+import { MaybeRef } from '@vueuse/core';
+import { FeathersService, Id, Paginated, PaginationOptions } from '@feathersjs/feathers';
+
 interface PiniaServiceOptions {
     servicePath: string;
     store: any;
+    methods?: string[];
+    events?: string[];
 }
 type SvcResult<S extends FeathersService> = S extends {
     get: (...args: any[]) => Promise<infer T>;
@@ -110,21 +113,21 @@ export declare class PiniaService<Svc extends FeathersService> {
      */
     removeFromStore(id: Id, params?: MaybeRef<SvcParams<Svc>>): SvcModel<Svc>;
     removeFromStore(id: undefined | null, params: MaybeRef<SvcParams<Svc>>): SvcModel<Svc>[];
-    useFind(params: ComputedRef<UseFindParams | null>, options?: UseFindOptions): {
+    useFind<M>(params: ComputedRef<UseFindParams | null>, options?: UseFindOptions): {
         paramsWithPagination: Params<Query>;
         isSsr: boolean;
         qid: string;
-        data: SvcModel<Svc>[];
-        allLocalData: SvcModel<Svc>[];
+        data: (SvcModel<Svc> | M)[];
+        allLocalData: (SvcModel<Svc> | M)[];
         total: number;
         limit: number;
         skip: number;
-        currentQuery: import("./types.js").ExtendedQueryInfo;
-        cachedQuery: import("./types.js").ExtendedQueryInfo;
-        latestQuery: import("./types.js").ExtendedQueryInfo;
-        previousQuery: import("./types.js").ExtendedQueryInfo;
+        currentQuery: import('./types.js').ExtendedQueryInfo;
+        cachedQuery: import('./types.js').ExtendedQueryInfo;
+        latestQuery: import('./types.js').ExtendedQueryInfo;
+        previousQuery: import('./types.js').ExtendedQueryInfo;
         find: () => Promise<void>;
-        request: Promise<import("./types.js").Paginated<SvcModel<Svc>>> | null;
+        request: Promise<import('./types.js').Paginated<SvcModel<Svc> | M>> | null;
         requestCount: number;
         queryWhen: (queryWhenFn: () => boolean) => void;
         isPending: boolean;
@@ -142,10 +145,10 @@ export declare class PiniaService<Svc extends FeathersService> {
         toEnd: () => Promise<void>;
         toPage: (page: number) => Promise<void>;
     };
-    useGet(id: MaybeRef<Id | null>, params?: MaybeRef<UseGetParams>): {
+    useGet<M>(id: MaybeRef<Id | null>, params?: MaybeRef<UseGetParams>): {
         params: UseGetParams;
         isSsr: boolean;
-        data: SvcModel<Svc> | null;
+        data: SvcModel<Svc> | M | null;
         ids: Id[];
         getFromStore: any;
         get: () => Promise<AnyData>;
@@ -163,10 +166,10 @@ export declare class PiniaService<Svc extends FeathersService> {
         error: any;
         clearError: () => null;
     };
-    useGetOnce(_id: MaybeRef<Id | null>, params?: MaybeRef<UseGetParams>): {
+    useGetOnce<M>(_id: MaybeRef<Id | null>, params?: MaybeRef<UseGetParams>): {
         params: UseGetParams;
         isSsr: boolean;
-        data: SvcModel<Svc> | null;
+        data: SvcModel<Svc> | M | null;
         ids: Id[];
         getFromStore: any;
         get: () => Promise<AnyData>;
@@ -184,8 +187,8 @@ export declare class PiniaService<Svc extends FeathersService> {
         error: any;
         clearError: () => null;
     };
-    on(eventName: string | symbol, listener: (...args: any[]) => void): FeathersService;
+    on(eventName: string | symbol, listener: (...args: any[]) => void): FeathersService | undefined;
     emit(eventName: string | symbol, ...args: any[]): boolean;
-    removeListener(eventName: string | symbol, listener: (...args: any[]) => void): FeathersService;
+    removeListener(eventName: string | symbol, listener: (...args: any[]) => void): FeathersService | undefined;
 }
 export {};

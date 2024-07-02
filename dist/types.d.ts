@@ -1,8 +1,9 @@
-import type { Params as FeathersParams, Id } from '@feathersjs/feathers';
-import type { ComputedRef } from 'vue-demi';
-import type { MaybeRef } from '@vueuse/core';
-import type { ServiceInstance } from './modeling/index.js';
-import type { PaginationStateQuery } from './stores/index.js';
+import { PaginationStateQuery } from './stores/index.js';
+import { ServiceInstance } from './modeling/index.js';
+import { MaybeRef } from '@vueuse/core';
+import { ComputedRef } from 'vue-demi';
+import { Params as FeathersParams, Id } from '@feathersjs/feathers';
+
 export type MaybeArray<T> = T | T[];
 export type AnyData = Record<string, any>;
 export type AnyDataOrArray<M extends AnyData> = MaybeArray<M>;
@@ -16,6 +17,10 @@ export interface Filters {
     $select?: string[];
 }
 export interface Query extends Filters, AnyData {
+}
+export interface CustomFilter {
+    key: string;
+    operator: <M>(items: M[], queryValue: any, query: Record<string, any>) => M[];
 }
 export interface Paginated<T> {
     total: number;

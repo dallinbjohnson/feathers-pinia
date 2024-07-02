@@ -1,5 +1,6 @@
-import type { ComputedRef, Ref } from 'vue';
-import type { AnyData } from '../types';
+import { AnyData } from '../types';
+import { ComputedRef, Ref } from 'vue';
+
 type AnyRef<D> = Ref<D> | ComputedRef<D>;
 interface UseBackupOptions<D> {
     onlyProps?: keyof D;

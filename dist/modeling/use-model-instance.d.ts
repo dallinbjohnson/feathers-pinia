@@ -1,7 +1,8 @@
-import type { Ref } from 'vue-demi';
-import type { CloneOptions } from '../stores/index.js';
-import type { AnyData, ById, Params } from '../types.js';
-import type { BaseModelData, ModelInstanceData } from './types.js';
+import { BaseModelData, ModelInstanceData } from './types.js';
+import { AnyData, ById, Params } from '../types.js';
+import { CloneOptions } from '../stores/index.js';
+import { Ref } from 'vue-demi';
+
 interface UseModelInstanceOptions<M, Q extends AnyData> {
     idField: string;
     clonesById: Ref<ById<AnyData>>;

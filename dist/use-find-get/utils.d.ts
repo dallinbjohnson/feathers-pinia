@@ -1,7 +1,8 @@
-import type { MaybeRef } from '@vueuse/core';
-import type { Ref } from 'vue-demi';
-import type { Params, Query } from '../types.js';
-import type { UseFindParams } from './types.js';
+import { UseFindParams } from './types.js';
+import { Params, Query } from '../types.js';
+import { Ref } from 'vue-demi';
+import { MaybeRef } from '@vueuse/core';
+
 export declare function makeParamsWithoutPage(params: MaybeRef<UseFindParams>): any;
 export declare function updateParamsExcludePage(_params: Ref<UseFindParams>, _newParams: MaybeRef<UseFindParams>): void;
 export declare function getIdsFromQueryInfo(pagination: any, queryInfo: any): any[];

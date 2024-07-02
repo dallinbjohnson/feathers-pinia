@@ -1,5 +1,6 @@
-import type { Ref } from 'vue-demi';
-import type { NullableId } from '@feathersjs/feathers';
+import { NullableId } from '@feathersjs/feathers';
+import { Ref } from 'vue-demi';
+
 type SuccessHandler = (result: Record<string, any>) => Promise<Record<string, any> | void>;
 type ErrorHandler = (error: Error) => Promise<void>;
 interface UseAuthOptions {
@@ -14,23 +15,23 @@ interface UseAuthOptions {
     onLogoutSuccess?: SuccessHandler;
     onLogoutError?: ErrorHandler;
 }
-interface AuthenticateData {
+export interface AuthenticateData {
     strategy: 'jwt' | 'local';
     accessToken?: string;
     email?: string;
     password?: string;
 }
-export declare function useAuth<d = AuthenticateData>(options: UseAuthOptions): {
+export declare function useAuth<d = AuthenticateData, U = any>(options: UseAuthOptions): {
     userId: Ref<NullableId>;
-    user: import("vue-demi").ComputedRef<any>;
+    user: import('vue-demi').ComputedRef<U | null>;
     error: Ref<{
         name: string;
         message: string;
         stack?: string | undefined;
         cause?: unknown;
     } | null>;
-    isPending: import("vue-demi").ComputedRef<boolean>;
-    isLogoutPending: import("vue-demi").ComputedRef<boolean>;
+    isPending: import('vue-demi').ComputedRef<boolean>;
+    isLogoutPending: import('vue-demi').ComputedRef<boolean>;
     isInitDone: Ref<boolean>;
     isAuthenticated: Ref<boolean>;
     loginRedirect: Ref<string | Record<string, any> | null>;

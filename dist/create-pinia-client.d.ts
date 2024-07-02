@@ -1,8 +1,8 @@
-import type { Application, FeathersService } from '@feathersjs/feathers';
-import type { HandleEvents } from './stores/index.js';
-import type { AnyData } from './types.js';
 import { PiniaService } from './create-pinia-service.js';
-import { useServiceStore } from './stores/index.js';
+import { AnyData, CustomFilter } from './types.js';
+import { HandleEvents, useServiceStore } from './stores/index.js';
+import { Application, FeathersService } from '@feathersjs/feathers';
+
 export interface SetupInstanceUtils {
     app?: any;
     service?: any;
@@ -32,6 +32,11 @@ export interface PiniaServiceConfig {
     setupInstance?: (data: any, utils: SetupInstanceUtils) => any;
     customizeStore?: (data: ReturnType<typeof useServiceStore>) => Record<string, any>;
     customSiftOperators?: Record<string, any>;
+    /**
+     * Custom filters are applied before the sift operators. They are useful for custom
+     * filters that are not supported by sift, like `$fuzzy`.
+     */
+    customFilters?: CustomFilter[];
 }
 export interface CreatePiniaClientConfig extends PiniaServiceConfig {
     idField: string;

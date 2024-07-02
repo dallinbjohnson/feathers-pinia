@@ -1,4 +1,5 @@
-import type { MaybeRef } from '@vueuse/core';
+import { MaybeRef } from '@vueuse/core';
+
 /**
  * Deeply unref a value, recursing into objects and arrays.
  *

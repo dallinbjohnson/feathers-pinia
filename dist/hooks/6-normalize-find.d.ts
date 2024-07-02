@@ -1,4 +1,5 @@
-import type { HookContext, NextFunction } from '@feathersjs/feathers';
+import { HookContext, NextFunction } from '@feathersjs/feathers';
+
 /**
  * Normalizes two things
  *  - pagination across all adapters, including @feathersjs/memory

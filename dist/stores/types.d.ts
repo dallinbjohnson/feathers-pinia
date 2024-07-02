@@ -1,8 +1,9 @@
-import type { ComputedRef, Ref } from 'vue-demi';
-import type { Id, Query } from '@feathersjs/feathers';
-import type { MaybeRef } from '@vueuse/core';
-import type { AnyData, Paginated, Params, QueryInfo } from '../types.js';
-import type { useFind } from '../use-find-get/use-find';
+import { useFind } from '../use-find-get/use-find';
+import { AnyData, Paginated, Params, QueryInfo } from '../types.js';
+import { MaybeRef } from '@vueuse/core';
+import { Id, Query } from '@feathersjs/feathers';
+import { ComputedRef, Ref } from 'vue-demi';
+
 export interface FindResponseAlwaysData<M extends AnyData> {
     data: M | M[];
     limit?: number;

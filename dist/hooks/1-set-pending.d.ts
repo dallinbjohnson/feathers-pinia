@@ -1,4 +1,5 @@
-import type { HookContext, NextFunction } from '@feathersjs/feathers';
+import { HookContext, NextFunction } from '@feathersjs/feathers';
+
 /**
  * Controls pending state
  */

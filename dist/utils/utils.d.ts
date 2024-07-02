@@ -1,6 +1,9 @@
-import type { MaybeRef } from '@vueuse/core';
-import type { Ref } from 'vue-demi';
-import type { AnyData, AnyDataOrArray, DiffDefinition, Params, Query, QueryInfo } from '../types.js';
+import { AnyData, AnyDataOrArray, DiffDefinition, Params, Query, QueryInfo } from '../types.js';
+import { Ref } from 'vue-demi';
+import { MaybeRef } from '@vueuse/core';
+
+export declare function createSymbol(name: string): string | symbol;
+export declare const SERVICE: string | symbol;
 interface GetExtendedQueryInfoOptions {
     queryInfo: QueryInfo;
     service: any;
@@ -9,7 +12,7 @@ interface GetExtendedQueryInfoOptions {
 }
 export declare function getExtendedQueryInfo({ queryInfo, service, store, qid }: GetExtendedQueryInfoOptions): {
     ids: any;
-    items: AnyData | import("../index.js").ServiceInstance<AnyData>[];
+    items: AnyData | import('../index.js').ServiceInstance<AnyData>[];
     total: any;
     queriedAt: any;
     queryState: any;

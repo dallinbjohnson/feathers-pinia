@@ -1,7 +1,8 @@
-import type { Id } from '@feathersjs/feathers';
-import type { MaybeRef } from '@vueuse/core';
-import type { AnyData, MaybeRefOrComputed } from '../types.js';
-import type { UseFindGetDeps, UseGetParams } from './types.js';
+import { UseFindGetDeps, UseGetParams } from './types.js';
+import { AnyData, MaybeRefOrComputed } from '../types.js';
+import { MaybeRef } from '@vueuse/core';
+import { Id } from '@feathersjs/feathers';
+
 export declare function useGet<M = AnyData>(_id: MaybeRefOrComputed<Id | null>, _params: MaybeRef<UseGetParams> | undefined, deps: UseFindGetDeps): {
     params: UseGetParams;
     isSsr: boolean;

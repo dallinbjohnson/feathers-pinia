@@ -1,6 +1,7 @@
-import type { FeathersService, Params } from '@feathersjs/feathers';
-import type { AnyData } from '../types.js';
-import type { PiniaService } from '../create-pinia-service.js';
+import { PiniaService } from '../create-pinia-service.js';
+import { AnyData } from '../types.js';
+import { FeathersService, Params } from '@feathersjs/feathers';
+
 export type Service = FeathersService | PiniaService<FeathersService>;
 export interface useServiceInstanceOptions<S extends Service> {
     service: S;

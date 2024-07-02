@@ -1,7 +1,8 @@
-import type { Id } from '@feathersjs/feathers';
-import { type Ref } from 'vue-demi';
-import type { AnyData, ById } from '../types.js';
-import type { AssignFn, beforeWriteFn, onReadFn } from './types.js';
+import { AssignFn, beforeWriteFn, onReadFn } from './types.js';
+import { AnyData, ById } from '../types.js';
+import { Ref } from 'vue-demi';
+import { Id } from '@feathersjs/feathers';
+
 interface UseServiceStorageOptions<M extends AnyData> {
     getId: (item: M) => string;
     onRead?: onReadFn<M>;
@@ -14,8 +15,8 @@ export type StorageMapUtils<M extends AnyData> = ReturnType<typeof useServiceSto
  */
 export declare function useServiceStorage<M extends AnyData>({ getId, onRead, beforeWrite, assign, }: UseServiceStorageOptions<M>): {
     byId: Ref<ById<M>>;
-    list: import("vue-demi").ComputedRef<M[]>;
-    ids: import("vue-demi").ComputedRef<string[]>;
+    list: import('vue-demi').ComputedRef<M[]>;
+    ids: import('vue-demi').ComputedRef<string[]>;
     getId: (item: M) => string;
     clear: () => void;
     has: (item: M) => boolean;

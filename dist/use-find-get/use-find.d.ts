@@ -1,6 +1,7 @@
-import type { ComputedRef, Ref, UnwrapNestedRefs, WritableComputedRef } from 'vue-demi';
-import type { AnyData, ExtendedQueryInfo, Paginated, Params, Query } from '../types.js';
-import type { UseFindGetDeps, UseFindOptions, UseFindParams } from './types.js';
+import { UseFindGetDeps, UseFindOptions, UseFindParams } from './types.js';
+import { AnyData, ExtendedQueryInfo, Paginated, Params, Query } from '../types.js';
+import { ComputedRef, Ref, UnwrapNestedRefs, WritableComputedRef } from 'vue-demi';
+
 export type UseFindReturn<M = AnyData> = UnwrapNestedRefs<{
     paramsWithPagination: ComputedRef<Params<Query>>;
     isSsr: ComputedRef<boolean>;

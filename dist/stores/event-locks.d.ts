@@ -1,6 +1,7 @@
-import type { Id } from '@feathersjs/feathers';
-import type { MaybeArray } from '../types.js';
-import type { EventName } from './types.js';
+import { EventName } from './types.js';
+import { MaybeArray } from '../types.js';
+import { Id } from '@feathersjs/feathers';
+
 export declare function useServiceEventLocks(): {
     eventLocks: {
         created: {
