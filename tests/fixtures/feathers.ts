@@ -10,6 +10,7 @@ import { computed, ref } from 'vue'
 import { vi } from 'vitest'
 import type { AdapterParams } from '@feathersjs/adapter-commons'
 import { createPiniaClient, defineGetters, defineSetters, useInstanceDefaults } from '../../src'
+import { createUFuzzyFilter } from '../../src/ufuzzy'
 import { timeout } from '../test-utils.js'
 import { makeContactsData } from './data.js'
 import type { Comments } from './schemas/comments'
@@ -142,6 +143,9 @@ function wrapPiniaClient<F extends Application>(feathersClient: F) {
     syncWithStorage: false,
     storage: localStorageMock,
     paramsForServer: [],
+    customFilters: [
+      { key: '$fuzzy', operator: createUFuzzyFilter() },
+    ],
     customizeStore() {
       return {
         globalCustom: true,
