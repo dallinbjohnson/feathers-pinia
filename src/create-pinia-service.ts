@@ -4,7 +4,7 @@ import type { ComputedRef } from 'vue-demi'
 import { computed, isRef, reactive, ref, unref } from 'vue-demi'
 import type { UseFindOptions, UseFindParams, UseGetParams } from './use-find-get/index.js'
 import type { AnyData, Params, Query } from './types.js'
-import { existingServiceMethods, getParams } from './utils/index.js'
+import { SERVICE, existingServiceMethods, getParams } from './utils/index.js'
 import { useFind, useGet } from './use-find-get/index.js'
 import { convertData } from './utils/convert-data'
 import type { ServiceInstance } from './modeling/index.js'
@@ -12,6 +12,8 @@ import type { ServiceInstance } from './modeling/index.js'
 interface PiniaServiceOptions {
   servicePath: string
   store: any
+  methods?: string[]
+  events?: string[]
 }
 
 // FIXME: Those are very hacky, there should be a simpler way of recovering service types
@@ -25,10 +27,13 @@ type SvcModel<S extends FeathersService> = ServiceInstance<SvcResult<S>>
 export class PiniaService<Svc extends FeathersService> {
   store
   servicePath = ''
-
+  
   constructor(public service: Svc, public options: PiniaServiceOptions) {
     this.store = options.store
     this.servicePath = options.servicePath
+    this.options = options
+    this.options.methods = ['create', 'patch', 'remove']
+    this.options.events = ['created', 'patched', 'removed']
 
     // copy custom methods from service onto this instance, exclude existing methods
     const keysToIgnore = Object.getOwnPropertyNames(Object.getPrototypeOf(this)).concat(existingServiceMethods)
@@ -36,8 +41,13 @@ export class PiniaService<Svc extends FeathersService> {
       if (typeof service[key] === 'function' && !keysToIgnore.includes(key)) {
         const instance = this as any
         instance[key] = (service[key] as any).bind(service)
+        this.options.methods.push(key)
       }
     }
+
+    Object.defineProperty(this, SERVICE, {
+      value: this.options
+    })
   }
 
   /**
@@ -223,21 +233,21 @@ export class PiniaService<Svc extends FeathersService> {
 
   /* hybrid methods */
 
-  useFind(params: ComputedRef<UseFindParams | null>, options?: UseFindOptions) {
+  useFind<M>(params: ComputedRef<UseFindParams | null>, options?: UseFindOptions) {
     const _params = isRef(params) ? params : ref(params)
-    return useFind<SvcModel<Svc>>(_params as ComputedRef<UseFindParams | null>, options, { service: this })
+    return useFind<M | SvcModel<Svc>>(_params as ComputedRef<UseFindParams | null>, options, { service: this })
   }
 
-  useGet(id: MaybeRef<Id | null>, params: MaybeRef<UseGetParams> = ref({})) {
+  useGet<M>(id: MaybeRef<Id | null>, params: MaybeRef<UseGetParams> = ref({})) {
     const _id = isRef(id) ? id : ref(id)
     const _params = isRef(params) ? params : ref(params)
-    return useGet<SvcModel<Svc>>(_id, _params, { service: this })
+    return useGet<M | SvcModel<Svc>>(_id, _params, { service: this })
   }
 
-  useGetOnce(_id: MaybeRef<Id | null>, params: MaybeRef<UseGetParams> = {}) {
+  useGetOnce<M>(_id: MaybeRef<Id | null>, params: MaybeRef<UseGetParams> = {}) {
     const _params = isRef(params) ? params : ref(params)
     Object.assign(_params.value, { immediate: false })
-    const results = this.useGet(_id, _params)
+    const results = this.useGet<M>(_id, _params)
     results.queryWhen(() => !results.data)
     results.get()
     return results
@@ -246,14 +256,20 @@ export class PiniaService<Svc extends FeathersService> {
   /* events */
 
   on(eventName: string | symbol, listener: (...args: any[]) => void) {
+    if (!this.service.on)
+      return
     return this.service.on(eventName, listener)
   }
 
   emit(eventName: string | symbol, ...args: any[]): boolean {
+    if (!this.service.emit)
+      return false
     return this.service.emit(eventName, ...args)
   }
 
   removeListener(eventName: string | symbol, listener: (...args: any[]) => void) {
+    if (!this.service.removeListener)
+      return
     return this.service.removeListener(eventName, listener)
   }
 }
